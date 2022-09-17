@@ -13,9 +13,10 @@ public class BasicProbe : GameBehaviour, IDamagable
 
 	[SerializeField] private float scaleAnimationDuration;
 
-	[SerializeField] private RewardObject RewardPrefab;
+	[SerializeField] private RewardObject RewardXPPrefab;
 	[SerializeField] private int MinRewardXP = 1;
 	[SerializeField] private int MaxRewardXP = 5;
+	[SerializeField] private RewardObject RewardAmmoPrefab;
     [SerializeField] private float RewardAmmoChance = 0.5f;
     [SerializeField] private int MinRewardAmmo = 5;
     [SerializeField] private int MaxRewardAmmo = 15;
@@ -27,33 +28,36 @@ public class BasicProbe : GameBehaviour, IDamagable
 
 	private float timeSinceSpawn;
 
-	public int Health = 1;
+	public int TotalHealth = 1;
+	private int HealthLeft = 1;
 
 	public void OnHit(int pDamage)
 	{
-		Health -= pDamage;
+		HealthLeft -= pDamage;
 		//Debug.Log($"Hit. {Health} left");
 
-		if(Health <= 0)
+		if(HealthLeft <= 0)
 		{
+			//reward Ammo
 			if(Random.Range(0,1f) > RewardAmmoChance)
 			{
-                RewardObject rewardAmmo = Instantiate(RewardPrefab, game.ProbesHolder);
+                RewardObject rewardAmmo = Instantiate(RewardAmmoPrefab, game.RewardsHolder);
 				float rangeOffsetX = Random.Range(0, 1);
 				float rangeOffsetY = Random.Range(0, 1);
 				rewardAmmo.transform.position = transform.position + new Vector3(rangeOffsetX, rangeOffsetY, 0);
 
                 rewardAmmo.Type = EReward.Ammo;
-				rewardAmmo.Amount = Random.Range(MinRewardXP, MaxRewardXP) + Health;
+				rewardAmmo.Amount = Random.Range(MinRewardXP, MaxRewardXP) + TotalHealth;
             }
 
-            RewardObject rewardXP = Instantiate(RewardPrefab, game.ProbesHolder);
+            //reward XP
+            RewardObject rewardXP = Instantiate(RewardXPPrefab, game.RewardsHolder);
             float rangeOffsetX2 = Random.Range(0, 1);
             float rangeOffsetY2 = Random.Range(0, 1);
             rewardXP.transform.position = transform.position + new Vector3(-rangeOffsetX2, rangeOffsetY2, 0) * Random.Range(2, 4f);
 
             rewardXP.Type = EReward.XP;
-            rewardXP.Amount = Random.Range(MinRewardAmmo, MaxRewardAmmo) + Health * 3;
+            rewardXP.Amount = Random.Range(MinRewardAmmo, MaxRewardAmmo) + TotalHealth * 3;
 
             Destroy(gameObject);
 		}
@@ -67,7 +71,9 @@ public class BasicProbe : GameBehaviour, IDamagable
 		targetScale = tr.localScale.x;
 		timeSinceSpawn = 0f;
 		tr.localScale = new Vector3(0f, 0f, 0f);
-	}
+        HealthLeft = TotalHealth;
+
+    }
 
     // Update is called once per frame
     void Update()

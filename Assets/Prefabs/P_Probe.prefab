@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3441402814320229665
 Transform:
   m_ObjectHideFlags: 0
@@ -157,9 +157,10 @@ MonoBehaviour:
   maxForce: 2
   takeoffDuration: 2
   scaleAnimationDuration: 0.5
-  RewardPrefab: {fileID: 8205686533309207204, guid: f931043884e87f64b960662eef6090ae, type: 3}
+  RewardXPPrefab: {fileID: 8205686533309207204, guid: b2b1e8a3fd3888b46ab7ffa556c8cbfd, type: 3}
   MinRewardXP: 1
   MaxRewardXP: 5
+  RewardAmmoPrefab: {fileID: 8205686533309207204, guid: f931043884e87f64b960662eef6090ae, type: 3}
   RewardAmmoChance: 0.5
   MinRewardAmmo: 5
   MaxRewardAmmo: 15

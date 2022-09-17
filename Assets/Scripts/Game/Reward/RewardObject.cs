@@ -15,6 +15,11 @@ public class RewardObject : GameBehaviour, IDamagable
     public int Amount;
     public EReward Type;
 
+    private void Awake()
+    {
+        if (Amount < 0)
+            Debug.LogError("Bad Amount");
+    }
     public void OnHit(int pDamage)
     {
         Destroy(gameObject);

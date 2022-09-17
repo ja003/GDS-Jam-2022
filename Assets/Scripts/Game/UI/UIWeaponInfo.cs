@@ -26,13 +26,19 @@ public class UIWeaponInfo : GameBehaviour
 
 	internal void SetAvailable(bool pValue)
 	{
-		Debug.Log("SetAvailable " + pValue);
+		//Debug.Log("SetAvailable " + pValue);
 		SetAlpha(pValue ? 1 : 0.1f);
 	}
 
 	internal void Refresh(WeaponBase pWeapon)
 	{
+		if(!pWeapon.Config.HasInfinityAmmo && pWeapon.TotalAmmo < 0)
+		{
+			Debug.LogError("bad ammo");
+		}
 		Ammo.text = pWeapon.Config.HasInfinityAmmo ? "" : pWeapon.TotalAmmo.ToString();
-	}
+        SetAvailable(pWeapon.HasAmmo());
+
+    }
 
 }

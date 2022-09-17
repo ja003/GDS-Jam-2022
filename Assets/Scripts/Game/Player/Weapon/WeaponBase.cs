@@ -12,7 +12,7 @@ public abstract class WeaponBase : GameBehaviour
 	UIWeaponInfo UI;
 	public bool IsUnlocked;
 
-	bool IsReloading;
+	public bool IsReloading;
 
 	public void Init()
 	{
