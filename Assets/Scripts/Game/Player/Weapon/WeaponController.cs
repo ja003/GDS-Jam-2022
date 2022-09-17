@@ -7,11 +7,12 @@ public class WeaponController : GameBehaviour
 {
 	[SerializeField] List<WeaponBase> WeaponPrefabs;
 
+	//1st weapon is always melee and is always active
 	List<WeaponBase> Weapons = new List<WeaponBase>();
 
-	WeaponBase SelectedRangeWeapon => Weapons[ActiveRangeWeapon];
+	WeaponBase SelectedRangeWeapon => Weapons[SelectedRangeWeaponIndex];
 
-	public int ActiveRangeWeapon = 1;
+	public int SelectedRangeWeaponIndex = 1;
 
 
 	private void Awake()
@@ -43,10 +44,25 @@ public class WeaponController : GameBehaviour
 	internal void SetNextWeaponActive()
 	{
 		SelectedRangeWeapon.SetSelected(false);
-		ActiveRangeWeapon++;
-		if(ActiveRangeWeapon >= Weapons.Count || !SelectedRangeWeapon.IsUnlocked)
-			ActiveRangeWeapon = 1;
-		Debug.Log($"Active weapon = {ActiveRangeWeapon} = {SelectedRangeWeapon}");
+		SelectedRangeWeaponIndex++;
+		if(SelectedRangeWeaponIndex >= Weapons.Count)
+			SelectedRangeWeaponIndex = 1;
+
+		bool hasSelected = false;
+		for(int i = SelectedRangeWeaponIndex; i < Weapons.Count; i++)
+		{
+			WeaponBase weapon = Weapons[i];
+			SelectedRangeWeaponIndex = i;
+			if(weapon.HasAmmo() && weapon.IsUnlocked)
+			{
+				hasSelected = true;
+				break;
+			}
+		}
+		if(!hasSelected)
+			SelectedRangeWeaponIndex = 1;
+
+		Debug.Log($"Active weapon = {SelectedRangeWeaponIndex} = {SelectedRangeWeapon}");
 
 		SelectedRangeWeapon.SetSelected(true);
 
