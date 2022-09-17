@@ -7,13 +7,13 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] Button btnPlay;
+    [SerializeField] Button btnPlay;    
     [SerializeField] Button btnControls;
 
     private void Awake()
     {
         btnPlay.onClick.AddListener(Play);
-        btnControls.onClick.AddListener(Play);
+        btnControls.onClick.AddListener(Controls);
     }
 
     private void Play()
