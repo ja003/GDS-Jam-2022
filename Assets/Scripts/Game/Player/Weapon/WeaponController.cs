@@ -3,22 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponController : MonoBehaviour
+public class WeaponController : GameBehaviour
 {
 	[SerializeField] List<WeaponBase> WeaponPrefabs;
 
+	//1st weapon is always melee and is always active
 	List<WeaponBase> Weapons = new List<WeaponBase>();
 
-	public int ActiveRangeWeapon = 1;
+	WeaponBase SelectedRangeWeapon => Weapons[SelectedRangeWeaponIndex];
+
+	public int SelectedRangeWeaponIndex = 1;
+
 
 	private void Awake()
 	{
-		foreach(var weaponPrefab in WeaponPrefabs)
+		for(int i = 0; i < WeaponPrefabs.Count; i++)
 		{
+			WeaponBase weaponPrefab = WeaponPrefabs[i];
 			var newInst = Instantiate(weaponPrefab.gameObject, transform);
 			Debug.Log($"Spawn {newInst.ToString()}");
-			Weapons.Add(newInst.GetComponent<WeaponBase>());
+			WeaponBase newWeapon = newInst.GetComponent<WeaponBase>();
+			Weapons.Add(newWeapon);
+
+			newWeapon.Init();
 		}
+
+		SelectedRangeWeapon.SetSelected(true);
 	}
 
 	public void UseMeleeWeapon()
@@ -28,15 +38,34 @@ public class WeaponController : MonoBehaviour
 			Debug.LogError("No weapons");
 			return;
 		}
-		Weapons[0].Use(Vector3.zero);
+		Weapons[0].TryUse(Vector3.zero);
 	}
 
 	internal void SetNextWeaponActive()
 	{
-		ActiveRangeWeapon++;
-		if(ActiveRangeWeapon >= Weapons.Count)
-			ActiveRangeWeapon = 1;
-		Debug.Log($"Active weapon = {ActiveRangeWeapon} = {Weapons[ActiveRangeWeapon].ToString()}");
+		SelectedRangeWeapon.SetSelected(false);
+		SelectedRangeWeaponIndex++;
+		if(SelectedRangeWeaponIndex >= Weapons.Count)
+			SelectedRangeWeaponIndex = 1;
+
+		bool hasSelected = false;
+		for(int i = SelectedRangeWeaponIndex; i < Weapons.Count; i++)
+		{
+			WeaponBase weapon = Weapons[i];
+			SelectedRangeWeaponIndex = i;
+			if(weapon.HasAmmo() && weapon.IsUnlocked)
+			{
+				hasSelected = true;
+				break;
+			}
+		}
+		if(!hasSelected)
+			SelectedRangeWeaponIndex = 1;
+
+		Debug.Log($"Active weapon = {SelectedRangeWeaponIndex} = {SelectedRangeWeapon}");
+
+		SelectedRangeWeapon.SetSelected(true);
+
 	}
 
 	public void UseRangeWeapon(Vector3 pDirection)
@@ -46,6 +75,15 @@ public class WeaponController : MonoBehaviour
 			Debug.LogError("No ranged weapons");
 			return;
 		}
-		Weapons[ActiveRangeWeapon].Use(pDirection);
+		SelectedRangeWeapon.TryUse(pDirection);
+	}
+
+	internal void TryUnlockWeapon(int pXP)
+	{
+		foreach(var weapon in Weapons)
+		{
+			if(weapon.IsUnlocked) continue;
+			weapon.TryUnlock(pXP);
+		}
 	}
 }

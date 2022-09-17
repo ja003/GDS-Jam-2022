@@ -110,6 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a2fb18ff5215a6448290b602c6454c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ammo: 0
+  Config: {fileID: 11400000, guid: 982700e243d7b2144b7a51c00223e957, type: 2}
+  AmmoPerMagazine: 0
+  Magazines: 0
   Cooldown: 0
+  IsUnlocked: 0
+  XPRequired: 3
+  HasInfinityAmmo: 1
   range: 2
