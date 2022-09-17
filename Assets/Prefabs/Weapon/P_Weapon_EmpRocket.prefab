@@ -116,7 +116,7 @@ MonoBehaviour:
   Cooldown: 1
   IsUnlocked: 1
   XPRequired: 0
-  HasInfinityAmmo: 0
+  HasInfinityAmmo: 1
   ProjectilePrefab: {fileID: 2074769729175952596, guid: acd0be8ca08ad224bbd2693310d19c37, type: 3}
-  Power: 100
+  Power: 500
   ProjectileSpawnOffset: 1
