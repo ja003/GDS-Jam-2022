@@ -21,7 +21,7 @@ public class WeaponController : GameBehaviour
         EMPPulse.TryUse(Vector3.zero);
 	}
 
-	public void UseRangeWeapon(Vector3 pDirection)
+	public void UseEMPRocket(Vector3 pDirection)
 	{
         EMPRocket.TryUse(pDirection);
 	}

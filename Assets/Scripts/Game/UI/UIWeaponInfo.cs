@@ -9,9 +9,7 @@ public class UIWeaponInfo : GameBehaviour
 {
 	[SerializeField] TextMeshProUGUI Name;
 	[SerializeField] TextMeshProUGUI Ammo;
-	[SerializeField] TextMeshProUGUI Magazines;
 	[SerializeField] Image Icon;
-	[SerializeField] Image Selector;
 	[SerializeField] Image Reload;
 
 	internal void Init(WeaponConfig pConfig)
@@ -20,16 +18,6 @@ public class UIWeaponInfo : GameBehaviour
 		Icon.sprite = pConfig.Icon;
 		SetReloading(false);
 	}
-
-	//public void SetAmmo(int pValue)
-	//{
-	//	ammo.text = pValue.ToString();
-	//}
-
-	//public void SetMagazines(int pValue)
-	//{
-	//	magazines.text = pValue.ToString();
-	//}
 
 	internal void SetReloading(bool pValue)
 	{
@@ -44,13 +32,7 @@ public class UIWeaponInfo : GameBehaviour
 
 	internal void Refresh(WeaponBase pWeapon)
 	{
-		Ammo.text = pWeapon.Config.HasInfinityAmmo ? "" : pWeapon.Ammo.ToString();
-		Magazines.text = pWeapon.Config.HasInfinityAmmo ? "" : pWeapon.Magazines.ToString();
+		Ammo.text = pWeapon.Config.HasInfinityAmmo ? "" : pWeapon.TotalAmmo.ToString();
 	}
 
-	internal void SetSelected(bool pValue)
-	{
-		if(Selector != null)
-			Selector.enabled = pValue;
-	}
 }
