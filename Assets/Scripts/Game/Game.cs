@@ -6,7 +6,10 @@ public class Game : CSingleton<Game>
 {
 	public Transform ProjectilesHolder;
 	public Transform ProbesHolder;
+	public Transform RewardsHolder;
 
-	public HUD HUD;
+	public Player Player;
+
+    public HUD HUD;
 	public EarthController Earth;
 }

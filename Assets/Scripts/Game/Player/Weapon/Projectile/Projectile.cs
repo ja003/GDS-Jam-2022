@@ -14,7 +14,12 @@ public class Projectile : GameBehaviour
 	private void OnCollisionEnter(Collision collision)
 	{
 		Debug.Log("OnCollisionEnter " + collision.gameObject.name);
-		collision.gameObject.GetComponent<IDamagable>()?.OnHit(damage);
+		IDamagable damagable = collision.gameObject.GetComponent<IDamagable>();
+
+        if (damagable != null)
+			damagable?.OnHit(damage);
+		
+
 
 		Destroy(gameObject);
 	}

@@ -42,4 +42,9 @@ public class WeaponController : GameBehaviour
 		HumanAbductor.StopUse();
 
     }
+
+	internal void AddAmmo(int amount)
+	{
+		EMPRocket.AddAmmo(amount);
+    }
 }

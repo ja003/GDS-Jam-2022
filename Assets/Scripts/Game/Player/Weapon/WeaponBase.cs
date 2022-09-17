@@ -75,7 +75,13 @@ public abstract class WeaponBase : GameBehaviour
 		}
 	}
 
-	internal void SetSelected(bool pValue)
+	public void AddAmmo(int pValue)
+	{
+		Ammo += pValue;
+        UI.Refresh(this);
+    }
+
+    internal void SetSelected(bool pValue)
 	{
 		IsSelected = true;
 		UI.SetSelected(pValue);

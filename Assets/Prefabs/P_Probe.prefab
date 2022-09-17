@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2656153315860011210}
   - component: {fileID: 2362913167826523275}
   m_Layer: 10
-  m_Name: Probe
+  m_Name: P_Probe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,6 +157,12 @@ MonoBehaviour:
   maxForce: 2
   takeoffDuration: 2
   scaleAnimationDuration: 0.5
+  RewardPrefab: {fileID: 8205686533309207204, guid: f931043884e87f64b960662eef6090ae, type: 3}
+  MinRewardXP: 1
+  MaxRewardXP: 5
+  RewardAmmoChance: 0.5
+  MinRewardAmmo: 5
+  MaxRewardAmmo: 15
   Health: 1
 --- !u!54 &2362913167826523275
 Rigidbody:
@@ -197,7 +203,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8493297803688018285}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.42077115, y: 0.14152874, z: -0.066643625, w: 0.89357704}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -205,7 +211,7 @@ Transform:
   - {fileID: 4945632434689284654}
   m_Father: {fileID: 3441402814320229665}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 50.43, y: 18, z: 0}
 --- !u!1001 &4839349807131884997
 PrefabInstance:
   m_ObjectHideFlags: 0
