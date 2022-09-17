@@ -37,13 +37,13 @@ public abstract class WeaponBase : GameBehaviour
 
 		if(IsReloading)
 		{
-			Debug.Log("reloading");
+			//Debug.Log("reloading");
 			return;
 		}
 
 		if(!HasAmmo())
 		{
-			Debug.Log("No ammmo");
+			//Debug.Log("No ammmo");
 			return;
 		}
 		Use(pDirection);
@@ -60,7 +60,7 @@ public abstract class WeaponBase : GameBehaviour
 	{
 		Ammo--;
 		UI.Refresh(this);
-		Debug.Log("DecreaseAmmo " + Ammo);
+		//Debug.Log("DecreaseAmmo " + Ammo);
 
 		if (Ammo <= 0)
 		{

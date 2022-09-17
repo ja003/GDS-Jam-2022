@@ -25,7 +25,7 @@ public class BasicProbe : MonoBehaviour, IDamagable
 	public void OnHit(int pDamage)
 	{
 		Health -= pDamage;
-		Debug.Log($"Hit. {Health} left");
+		//Debug.Log($"Hit. {Health} left");
 
 		if(Health <= 0)
 		{
