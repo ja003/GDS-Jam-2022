@@ -21,7 +21,7 @@ public class WeaponController : GameBehaviour
 			WeaponBase newWeapon = newInst.GetComponent<WeaponBase>();
 			Weapons.Add(newWeapon);
 
-			newWeapon.SetUI(game.HUD.WeaponInfos[i]);
+			newWeapon.Init(game.HUD.WeaponInfos[i]);
 		}
 	}
 
@@ -32,7 +32,7 @@ public class WeaponController : GameBehaviour
 			Debug.LogError("No weapons");
 			return;
 		}
-		Weapons[0].Use(Vector3.zero);
+		Weapons[0].TryUse(Vector3.zero);
 	}
 
 	internal void SetNextWeaponActive()
@@ -50,6 +50,6 @@ public class WeaponController : GameBehaviour
 			Debug.LogError("No ranged weapons");
 			return;
 		}
-		Weapons[ActiveRangeWeapon].Use(pDirection);
+		Weapons[ActiveRangeWeapon].TryUse(pDirection);
 	}
 }
