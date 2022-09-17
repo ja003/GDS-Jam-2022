@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6882442280521224883}
   - component: {fileID: 2656153315860011210}
   - component: {fileID: 2362913167826523275}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Probe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 4.8641706, y: 2.06, z: 2.2147431}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2656153315860011210
 MonoBehaviour:
@@ -199,6 +199,7 @@ MonoBehaviour:
   maxForce: 2
   takeoffDuration: 2
   scaleAnimationDuration: 0.5
+  Health: 1
 --- !u!54 &2362913167826523275
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -213,5 +214,5 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 120
   m_CollisionDetection: 0

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3802393614033314023}
   - component: {fileID: 5774936236663547269}
   - component: {fileID: 1733030532447408552}
-  - component: {fileID: 2499859901039128587}
   - component: {fileID: 3669822291021162058}
+  - component: {fileID: 6278142330690605037}
+  - component: {fileID: 5238692018675366091}
   m_Layer: 0
   m_Name: P_ProjectileTest
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2074769729175952596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.699, z: 0.435}
-  m_LocalScale: {x: 0.10728, y: 0.10728, z: 0.10728}
+  m_LocalScale: {x: 0.1, y: 0.65, z: 0.10728}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2499859901039128587
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2074769729175952596}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3669822291021162058
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,3 +102,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6278142330690605037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074769729175952596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f094502bb47c2468cee7730ee79c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &5238692018675366091
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074769729175952596}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5053522
+  m_Height: 1.08
+  m_Direction: 1
+  m_Center: {x: 0.0053520612, y: 0, z: 0}

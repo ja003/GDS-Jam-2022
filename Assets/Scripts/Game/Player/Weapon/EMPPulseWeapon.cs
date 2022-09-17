@@ -5,6 +5,10 @@ using UnityEngine;
 public class EMPPulseWeapon : WeaponBase
 {
 	[SerializeField] ParticleSystem particles;
+	[SerializeField] int Damage = 1;
+	[SerializeField] int Radius = 1;
+	[SerializeField] LayerMask ProbeLayer;
+
 	protected override void Use(Vector3 pDirection)
 	{
 		Debug.Log("USE");
@@ -16,6 +20,12 @@ public class EMPPulseWeapon : WeaponBase
 		}, Cooldown);
 
 		DecreaseAmmo();
+
+		var overlaps = Physics.OverlapSphere(transform.position, Radius, ProbeLayer);
+		foreach(var overlap in overlaps)
+		{
+			overlap.transform.GetComponent<IDamagable>()?.OnHit(Damage);
+		}
 	}
 
 }

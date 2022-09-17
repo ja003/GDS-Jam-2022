@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProbeSpawner : MonoBehaviour
+public class ProbeSpawner : GameBehaviour
 {
 	[SerializeField] private float cooldown;
 	[SerializeField] private float radius;
@@ -28,7 +28,8 @@ public class ProbeSpawner : MonoBehaviour
 			Vector3 direction = new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle));
 			Vector3 spawnPoint = direction * radius;
 
-			Object.Instantiate(probePrefab, spawnPoint, probePrefab.GetComponent<Transform>().rotation);
+			var newInst = Instantiate(probePrefab, spawnPoint, probePrefab.GetComponent<Transform>().rotation);
+			newInst.transform.parent = game.ProbesHolder;
 
 			cooldownRemainig = cooldown;
 		}

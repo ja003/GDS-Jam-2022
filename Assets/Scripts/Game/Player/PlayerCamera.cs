@@ -10,7 +10,14 @@ public class PlayerCamera : MonoBehaviour
 
     public float smoothSpeed = 0.1f;
 
-    private void Start()
+	private void Awake()
+	{
+		if(target == null)
+		{
+            target = FindObjectOfType<Player>().transform;
+		}
+	}
+	private void Start()
     {
         // You can also specify your own offset from inspector as it is public variable
         offset = transform.position - target.position;

@@ -75,13 +75,13 @@ public class GameBehaviour : MonoBehaviour
 		}
 	}
 
-	private Rigidbody2D _rb;
-	protected Rigidbody2D rb
+	private Rigidbody _rb;
+	protected Rigidbody rb
 	{
 		get
 		{
 			if(_rb == null)
-				_rb = GetComponent<Rigidbody2D>();
+				_rb = GetComponent<Rigidbody>();
 			return _rb;
 		}
 	}

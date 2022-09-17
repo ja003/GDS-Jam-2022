@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicProbe : MonoBehaviour
+public class BasicProbe : MonoBehaviour, IDamagable
 {
     [SerializeField] private float gravityMagnitude;
 
@@ -20,8 +20,21 @@ public class BasicProbe : MonoBehaviour
 
 	private float timeSinceSpawn;
 
+	public int Health = 1;
+
+	public void OnHit(int pDamage)
+	{
+		Health -= pDamage;
+		Debug.Log($"Hit. {Health} left");
+
+		if(Health <= 0)
+		{
+			Destroy(gameObject);
+		}
+	}
+
 	// Start is called before the first frame update
-    void Start()
+	void Start()
     {
         rb = GetComponent<Rigidbody>();
 		tr = GetComponent<Transform>();
