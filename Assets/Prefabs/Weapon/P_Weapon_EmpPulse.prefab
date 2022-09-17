@@ -112,3 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ammo: 10
   Cooldown: 1
+  IsUnlocked: 1

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponController : MonoBehaviour
+public class WeaponController : GameBehaviour
 {
 	[SerializeField] List<WeaponBase> WeaponPrefabs;
 
@@ -13,11 +13,15 @@ public class WeaponController : MonoBehaviour
 
 	private void Awake()
 	{
-		foreach(var weaponPrefab in WeaponPrefabs)
+		for(int i = 0; i < WeaponPrefabs.Count; i++)
 		{
+			WeaponBase weaponPrefab = WeaponPrefabs[i];
 			var newInst = Instantiate(weaponPrefab.gameObject, transform);
 			Debug.Log($"Spawn {newInst.ToString()}");
-			Weapons.Add(newInst.GetComponent<WeaponBase>());
+			WeaponBase newWeapon = newInst.GetComponent<WeaponBase>();
+			Weapons.Add(newWeapon);
+
+			newWeapon.SetUI(game.HUD.WeaponInfos[i]);
 		}
 	}
 
@@ -34,9 +38,9 @@ public class WeaponController : MonoBehaviour
 	internal void SetNextWeaponActive()
 	{
 		ActiveRangeWeapon++;
-		if(ActiveRangeWeapon >= Weapons.Count)
+		if(ActiveRangeWeapon >= Weapons.Count || !Weapons[ActiveRangeWeapon].IsUnlocked)
 			ActiveRangeWeapon = 1;
-		Debug.Log($"Active weapon = {ActiveRangeWeapon} = {Weapons[ActiveRangeWeapon].ToString()}");
+		Debug.Log($"Active weapon = {ActiveRangeWeapon} = {Weapons[ActiveRangeWeapon]}");
 	}
 
 	public void UseRangeWeapon(Vector3 pDirection)
