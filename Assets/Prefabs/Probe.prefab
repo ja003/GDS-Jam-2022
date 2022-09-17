@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6882442280521224883}
   - component: {fileID: 2656153315860011210}
   - component: {fileID: 2362913167826523275}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Probe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,6 +199,7 @@ MonoBehaviour:
   maxForce: 2
   takeoffDuration: 2
   scaleAnimationDuration: 0.5
+  Health: 1
 --- !u!54 &2362913167826523275
 Rigidbody:
   m_ObjectHideFlags: 0

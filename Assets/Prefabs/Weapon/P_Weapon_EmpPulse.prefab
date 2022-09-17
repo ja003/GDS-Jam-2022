@@ -4932,3 +4932,8 @@ MonoBehaviour:
   XPRequired: 0
   HasInfinityAmmo: 1
   particles: {fileID: 877267841}
+  Damage: 1
+  Radius: 2
+  ProbeLayer:
+    serializedVersion: 2
+    m_Bits: 1024
