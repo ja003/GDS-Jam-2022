@@ -1566,7 +1566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectilesHolder: {fileID: 4341687137337744091}
-  ProbesHolder: {fileID: 0}
+  ProbesHolder: {fileID: 1534718538}
   HUD: {fileID: 4341687137877000437}
 --- !u!1 &6664062445144979606
 GameObject:
@@ -1850,7 +1850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 703362615823409308, guid: fb70a71873d53b24ead5cf077d3bb478, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.52
+      value: 2.761
       objectReference: {fileID: 0}
     - target: {fileID: 703362615823409308, guid: fb70a71873d53b24ead5cf077d3bb478, type: 3}
       propertyPath: m_LocalPosition.y
