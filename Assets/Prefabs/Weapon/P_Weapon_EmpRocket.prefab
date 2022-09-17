@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Config: {fileID: 11400000, guid: 4799f57d2ffdcf9498b88484156de8e5, type: 2}
-  AmmoPerMagazine: 2
+  AmmoPerMagazine: 10
   Magazines: 1
   Cooldown: 1
   IsUnlocked: 1
@@ -119,4 +119,5 @@ MonoBehaviour:
   HasInfinityAmmo: 1
   ProjectilePrefab: {fileID: 2074769729175952596, guid: acd0be8ca08ad224bbd2693310d19c37, type: 3}
   Power: 500
+  Damage: 1
   ProjectileSpawnOffset: 1

@@ -28,7 +28,7 @@ public class ProbeSpawner : GameBehaviour
 			Vector3 direction = new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle));
 			Vector3 spawnPoint = direction * radius;
 
-			var newInst = Instantiate(probePrefab, spawnPoint, probePrefab.GetComponent<Transform>().rotation);
+			var newInst = Instantiate(probePrefab, spawnPoint, Quaternion.identity);
 			newInst.transform.parent = game.ProbesHolder;
 
 			cooldownRemainig = cooldown;

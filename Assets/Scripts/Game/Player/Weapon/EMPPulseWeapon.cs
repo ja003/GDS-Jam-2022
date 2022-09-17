@@ -11,7 +11,7 @@ public class EMPPulseWeapon : WeaponBase
 
 	protected override void Use(Vector3 pDirection)
 	{
-		Debug.Log("USE");
+		//Debug.Log("USE");
 		particles.enableEmission = true;
 
 		DoInTime(() =>

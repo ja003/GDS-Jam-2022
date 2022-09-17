@@ -16,6 +16,7 @@ public abstract class WeaponBase : GameBehaviour
 	public bool HasInfinityAmmo;
 
 	bool IsSelected;
+	bool IsReloading;
 
 	public void Init()
 	{
@@ -34,9 +35,15 @@ public abstract class WeaponBase : GameBehaviour
 			return;
 		}
 
+		if(IsReloading)
+		{
+			//Debug.Log("reloading");
+			return;
+		}
+
 		if(!HasAmmo())
 		{
-			Debug.Log("No ammmo");
+			//Debug.Log("No ammmo");
 			return;
 		}
 		Use(pDirection);
@@ -53,13 +60,14 @@ public abstract class WeaponBase : GameBehaviour
 	{
 		Ammo--;
 		UI.Refresh(this);
-		Debug.Log("DecreaseAmmo " + Ammo);
+		//Debug.Log("DecreaseAmmo " + Ammo);
 
 		if (Ammo <= 0)
 		{
 			if(Magazines > 0 || HasInfinityAmmo)
 			{
 				UI.SetReloading(true);
+				IsReloading = true;
 				DoInTime(Reload, Cooldown);
 			}
 			else
@@ -81,6 +89,7 @@ public abstract class WeaponBase : GameBehaviour
 		Magazines--;
 		UI.Refresh(this);
 		UI.SetReloading(false);
+		IsReloading = false;
 	}
 
 	internal void TryUnlock(int pXP)
