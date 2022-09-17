@@ -6,21 +6,18 @@ using UnityEngine;
 public abstract class WeaponBase : GameBehaviour
 {
 	public WeaponConfig Config;
-	public int AmmoPerMagazine;
-	public int Magazines;
 	public int Ammo { get; private set; }
-	public int Cooldown;
+	public int Magazines { get; private set; }
+
 	UIWeaponInfo UI;
 	public bool IsUnlocked;
-	[SerializeField] int XPRequired;
-	public bool HasInfinityAmmo;
 
 	bool IsSelected;
 	bool IsReloading;
 
 	public void Init()
 	{
-		Ammo = AmmoPerMagazine;
+		Ammo = Config.AmmoPerMagazine;
 		UI = game.HUD.Weapon.CreateWeaponInfoUI(Config);
 		UI.gameObject.SetActive(IsUnlocked);
 		UI.Refresh(this);
@@ -51,7 +48,7 @@ public abstract class WeaponBase : GameBehaviour
 
 	public bool HasAmmo()
 	{
-		return Ammo > 0 || HasInfinityAmmo;
+		return Ammo > 0 || Config.HasInfinityAmmo;
 	}
 
 	protected abstract void Use(Vector3 pDirection);
@@ -64,11 +61,12 @@ public abstract class WeaponBase : GameBehaviour
 
 		if (Ammo <= 0)
 		{
-			if(Magazines > 0 || HasInfinityAmmo)
+			//even infinity ammo weapon has to reaload
+			if(Magazines > 0 || Config.HasInfinityAmmo)
 			{
 				UI.SetReloading(true);
 				IsReloading = true;
-				DoInTime(Reload, Cooldown);
+				DoInTime(Reload, Config.Cooldown);
 			}
 			else
 			{
@@ -85,7 +83,7 @@ public abstract class WeaponBase : GameBehaviour
 
 	void Reload()
 	{
-		Ammo = AmmoPerMagazine;
+		Ammo = Config.AmmoPerMagazine;
 		Magazines--;
 		UI.Refresh(this);
 		UI.SetReloading(false);
@@ -94,7 +92,7 @@ public abstract class WeaponBase : GameBehaviour
 
 	internal void TryUnlock(int pXP)
 	{
-		if(pXP >= XPRequired)
+		if(pXP >=  Config.XPRequired)
 		{
 			IsUnlocked = true;
 			UI.Refresh(this);
