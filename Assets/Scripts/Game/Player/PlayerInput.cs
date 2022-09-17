@@ -22,12 +22,16 @@ public class PlayerInput : PlayerBehaviour
 		{
 			Player.WeaponController.UseHumanAbductor();
 		}
-		//if(Input.GetKeyDown(KeyCode.E))
-		//{
-		//	Player.WeaponController.SetNextWeaponActive();
-		//}
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Player.WeaponController.StopUseHumanAbductor();
+        }
+        //if(Input.GetKeyDown(KeyCode.E))
+        //{
+        //	Player.WeaponController.SetNextWeaponActive();
+        //}
 
-		if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
 		{
 			Player.WeaponController.UseRangeWeapon(dir);
 		}

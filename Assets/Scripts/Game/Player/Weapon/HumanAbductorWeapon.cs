@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,13 @@ using UnityEngine;
 public class HumanAbductorWeapon : WeaponBase
 {
 	[SerializeField] float range = 2;
+	[SerializeField] float Force = 1f;
 	[SerializeField] LayerMask ScientistLayer;
+
+	Scientist targetedScientist;
+
+
+
 	protected override void Use(Vector3 pDirection)
 	{
 		Debug.DrawLine(transform.position, transform.position + pDirection.normalized * range, Color.red, 1);
@@ -13,9 +20,31 @@ public class HumanAbductorWeapon : WeaponBase
 
 		RaycastHit hit;
 
-		if(Physics.Raycast(new Ray(transform.position, pDirection.normalized * range), out hit, range, (LayerMask)ScientistLayer))
+
+        var overlaps = Physics.OverlapSphere(transform.position, range, ScientistLayer);
+		foreach(var overlap in overlaps)
 		{
-			Destroy(hit.transform.gameObject);
+			targetedScientist = overlap.GetComponent<Scientist>();
+			if (targetedScientist != null)
+				break;
+
+			
 		}
 	}
+
+	private void FixedUpdate()
+	{
+		if (targetedScientist == null) 
+			return;
+
+        Vector3 dir = (transform.position - targetedScientist.transform.position).normalized;
+        targetedScientist.AddForce(dir * Force);
+
+    }
+
+	internal void StopUse()
+	{
+		targetedScientist = null;
+
+    }
 }

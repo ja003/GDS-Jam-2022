@@ -36,4 +36,10 @@ public class WeaponController : GameBehaviour
 		HumanAbductor.TryUnlock(pXP);
 
     }
+
+	internal void StopUseHumanAbductor()
+	{
+		HumanAbductor.StopUse();
+
+    }
 }
