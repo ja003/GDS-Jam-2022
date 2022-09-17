@@ -34,12 +34,17 @@ public abstract class WeaponBase : GameBehaviour
 			return;
 		}
 
-		if(Ammo <= 0 && !HasInfinityAmmo)
+		if(!HasAmmo())
 		{
 			Debug.Log("No ammmo");
 			return;
 		}
 		Use(pDirection);
+	}
+
+	public bool HasAmmo()
+	{
+		return Ammo > 0 || HasInfinityAmmo;
 	}
 
 	protected abstract void Use(Vector3 pDirection);
