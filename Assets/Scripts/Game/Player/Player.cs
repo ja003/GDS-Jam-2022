@@ -5,4 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 	public WeaponController WeaponController;
+	public PlayerStats PlayerStats;
+
+
 }

@@ -5,24 +5,35 @@ using UnityEngine;
 
 public abstract class WeaponBase : GameBehaviour
 {
+	public WeaponConfig Config;
 	public int AmmoPerMagazine;
 	public int Magazines;
 	public int Ammo { get; private set; }
 	public int Cooldown;
 	UIWeaponInfo UI;
 	public bool IsUnlocked;
+	[SerializeField] int XPRequired;
 	public bool HasInfinityAmmo;
 
-	public void Init(UIWeaponInfo pUIWeaponInfo)
+	bool IsSelected;
+
+	public void Init()
 	{
 		Ammo = AmmoPerMagazine;
-		UI = pUIWeaponInfo;
+		UI = game.HUD.Weapon.CreateWeaponInfoUI(Config);
 		UI.gameObject.SetActive(IsUnlocked);
 		UI.Refresh(this);
+		SetSelected(false);
 	}
 
 	public void TryUse(Vector3 pDirection)
 	{
+		if(!IsSelected)
+		{
+			Debug.LogError("Not selected!");
+			return;
+		}
+
 		if(Ammo <= 0 && !HasInfinityAmmo)
 		{
 			Debug.Log("No ammmo");
@@ -53,6 +64,12 @@ public abstract class WeaponBase : GameBehaviour
 		}
 	}
 
+	internal void SetSelected(bool pValue)
+	{
+		IsSelected = true;
+		UI.SetSelected(pValue);
+	}
+
 	void Reload()
 	{
 		Ammo = AmmoPerMagazine;
@@ -60,11 +77,14 @@ public abstract class WeaponBase : GameBehaviour
 		UI.Refresh(this);
 	}
 
-	public void Unlock()
+	internal void TryUnlock(int pXP)
 	{
-		IsUnlocked = true;
-		UI.Refresh(this);
+		if(pXP >= XPRequired)
+		{
+			IsUnlocked = true;
+			UI.Refresh(this);
 
-		UI.gameObject.SetActive(IsUnlocked);
+			UI.gameObject.SetActive(IsUnlocked);
+		}
 	}
 }

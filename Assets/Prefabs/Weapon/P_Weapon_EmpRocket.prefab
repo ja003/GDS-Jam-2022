@@ -110,10 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a6bba52ce1c094fad8e359e62b05d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Config: {fileID: 11400000, guid: 4799f57d2ffdcf9498b88484156de8e5, type: 2}
   AmmoPerMagazine: 2
   Magazines: 1
   Cooldown: 1
   IsUnlocked: 1
+  XPRequired: 0
   HasInfinityAmmo: 0
   ProjectilePrefab: {fileID: 2074769729175952596, guid: acd0be8ca08ad224bbd2693310d19c37, type: 3}
   Power: 100

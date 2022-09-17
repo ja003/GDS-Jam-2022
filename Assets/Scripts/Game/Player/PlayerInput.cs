@@ -31,5 +31,11 @@ public class PlayerInput : PlayerBehaviour
 		{
 			Player.WeaponController.UseRangeWeapon(dir);
 		}
+
+		// debug
+		if(Input.GetKeyDown(KeyCode.Q))
+		{
+			Player.PlayerStats.AddXP(1);
+		}
 	}
 }

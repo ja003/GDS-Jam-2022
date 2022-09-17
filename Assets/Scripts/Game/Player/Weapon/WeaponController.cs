@@ -9,7 +9,10 @@ public class WeaponController : GameBehaviour
 
 	List<WeaponBase> Weapons = new List<WeaponBase>();
 
+	WeaponBase SelectedRangeWeapon => Weapons[ActiveRangeWeapon];
+
 	public int ActiveRangeWeapon = 1;
+
 
 	private void Awake()
 	{
@@ -21,8 +24,10 @@ public class WeaponController : GameBehaviour
 			WeaponBase newWeapon = newInst.GetComponent<WeaponBase>();
 			Weapons.Add(newWeapon);
 
-			newWeapon.Init(game.HUD.WeaponInfos[i]);
+			newWeapon.Init();
 		}
+
+		SelectedRangeWeapon.SetSelected(true);
 	}
 
 	public void UseMeleeWeapon()
@@ -37,10 +42,14 @@ public class WeaponController : GameBehaviour
 
 	internal void SetNextWeaponActive()
 	{
+		SelectedRangeWeapon.SetSelected(false);
 		ActiveRangeWeapon++;
-		if(ActiveRangeWeapon >= Weapons.Count || !Weapons[ActiveRangeWeapon].IsUnlocked)
+		if(ActiveRangeWeapon >= Weapons.Count || !SelectedRangeWeapon.IsUnlocked)
 			ActiveRangeWeapon = 1;
-		Debug.Log($"Active weapon = {ActiveRangeWeapon} = {Weapons[ActiveRangeWeapon]}");
+		Debug.Log($"Active weapon = {ActiveRangeWeapon} = {SelectedRangeWeapon}");
+
+		SelectedRangeWeapon.SetSelected(true);
+
 	}
 
 	public void UseRangeWeapon(Vector3 pDirection)
@@ -50,6 +59,15 @@ public class WeaponController : GameBehaviour
 			Debug.LogError("No ranged weapons");
 			return;
 		}
-		Weapons[ActiveRangeWeapon].TryUse(pDirection);
+		SelectedRangeWeapon.TryUse(pDirection);
+	}
+
+	internal void TryUnlockWeapon(int pXP)
+	{
+		foreach(var weapon in Weapons)
+		{
+			if(weapon.IsUnlocked) continue;
+			weapon.TryUnlock(pXP);
+		}
 	}
 }
