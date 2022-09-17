@@ -7,5 +7,5 @@ public abstract class WeaponBase : MonoBehaviour
 	public int Ammo;
 	public int Cooldown;
 
-	public abstract void Use();
+	public abstract void Use(Vector3 pDirection);
 }

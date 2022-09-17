@@ -8,6 +8,8 @@ public class WeaponController : MonoBehaviour
 
 	List<WeaponBase> Weapons = new List<WeaponBase>();
 
+	public int ActiveRangeWeapon = 1;
+
 	private void Awake()
 	{
 		foreach(var weaponPrefab in WeaponPrefabs)
@@ -25,6 +27,16 @@ public class WeaponController : MonoBehaviour
 			Debug.LogError("No weapons");
 			return;
 		}
-		Weapons[0].Use();
+		Weapons[0].Use(Vector3.zero);
+	}
+
+	public void UseRangeWeapon(Vector3 pDirection)
+	{
+		if(Weapons.Count <= 1)
+		{
+			Debug.LogError("No ranged weapons");
+			return;
+		}
+		Weapons[ActiveRangeWeapon].Use(pDirection);
 	}
 }

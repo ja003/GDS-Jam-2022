@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EMPPulseWeapon : WeaponBase
 {
-	public override void Use()
+	public override void Use(Vector3 pDirection)
 	{
 		Debug.Log("USE");
 	}
