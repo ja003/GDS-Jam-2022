@@ -43,7 +43,7 @@ public class PlayerInput : PlayerBehaviour
         // debug
         if (Input.GetKeyDown(KeyCode.Q))
 		{
-			Player.PlayerStats.AddXP(1);
+			Player.Stats.AddXP(1);
 		}
 	}
 }

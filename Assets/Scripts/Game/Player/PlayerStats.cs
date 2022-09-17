@@ -19,5 +19,13 @@ public class PlayerStats : PlayerBehaviour
 		Player.WeaponController.TryUnlockWeapon(XP);
 		game.Earth.OnXPChanged(XP);
 
+	}
+
+	public void AddDetection(int pValue)
+	{
+		DetectionMeter += pValue;
+        game.HUD.SetDetectionMeter(DetectionMeter);
+
     }
+
 }
