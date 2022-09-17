@@ -14,9 +14,12 @@ public class Game : CSingleton<Game>
     public HUD HUD;
 	public EarthController Earth;
 
+	[SerializeField] GameObject EndGameScreen;
+
 	internal void EndGame()
 	{
 		HUD.OnEndGame();
 		Debug.Log("End game");
-	}
+		EndGameScreen.SetActive(true);
+    }
 }
