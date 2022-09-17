@@ -9,9 +9,18 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] ForceMode mode = ForceMode.Force;
 	[SerializeField] float maxVelocity = 8f;
 
-	[SerializeField] float maxDistanceFromCenter = 25f, maxEscapeFromBounds = 2f;
+	[SerializeField] EntryZone[] EntryZones;
 
-	Vector3 playgroundCentre => Vector3.zero;
+    [System.Serializable]
+	public class EntryZone
+    {
+		public Vector3 Center;
+
+		public float Radius, MaxEscapeFromBounds;
+
+		public NoEntryMode Mode = NoEntryMode.StayOutside;
+		public enum NoEntryMode { StayInside = -1, StayOutside = 1 }
+	}
 
 	// Start is called before the first frame update
 	void Start()
@@ -44,23 +53,37 @@ public class PlayerMovement : MonoBehaviour
 		}
 		forceToAdd = forceToAdd.normalized;
 
-		var distanceFromCenter = Vector3.Distance(rb.position, playgroundCentre);
-		if(distanceFromCenter > maxDistanceFromCenter)
-		{
-			var toCenter = (playgroundCentre - rb.position).normalized;
-			var lerpFactor = Mathf.Min(maxEscapeFromBounds, distanceFromCenter - maxDistanceFromCenter) / maxEscapeFromBounds;
-			forceToAdd = Vector3.Lerp(forceToAdd, toCenter, lerpFactor).normalized;
-		}
+		foreach(var n in EntryZones)
+			forceToAdd = ModifyByNoEntryZone(forceToAdd, n);
+
 		forceToAdd *= speed * Time.deltaTime;
 		rb.AddForce(forceToAdd);
-		//rb.velocity = forceToAdd;
+	}
+
+
+	private Vector3 ModifyByNoEntryZone(Vector3 currentForceToAdd, EntryZone n)
+	{
+		var m = (int)n.Mode;
+		var distanceFromCenter = Vector3.Distance(rb.position, n.Center);
+		if (distanceFromCenter.CompareTo(n.Radius) == -m)
+		{
+			var avayFromCenter = ((rb.position - n.Center)*m).normalized;
+			var lerpFactor = Mathf.Min(n.MaxEscapeFromBounds, (n.Radius - distanceFromCenter)*m) / n.MaxEscapeFromBounds;
+			currentForceToAdd = Vector3.Lerp(currentForceToAdd, avayFromCenter, lerpFactor).normalized;
+		}
+		return currentForceToAdd;
 	}
 
 
 	private void OnDrawGizmosSelected()
 	{
-		Gizmos.DrawWireSphere(playgroundCentre, maxDistanceFromCenter);
-		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere(playgroundCentre, maxDistanceFromCenter + maxEscapeFromBounds);
+		foreach(var n in EntryZones)
+		{
+			Gizmos.color = n.Mode switch { EntryZone.NoEntryMode.StayInside => Color.green, EntryZone.NoEntryMode.StayOutside => Color.yellow };
+			Gizmos.DrawWireSphere(n.Center, n.Radius);
+			Gizmos.color = Color.red;
+			Gizmos.DrawWireSphere(n.Center, n.Radius - n.MaxEscapeFromBounds);
+		}
+
 	}
 }
