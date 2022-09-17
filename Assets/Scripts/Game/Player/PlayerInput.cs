@@ -22,5 +22,14 @@ public class PlayerInput : PlayerBehaviour
 		{
 			Player.WeaponController.UseMeleeWeapon();
 		}
+		if(Input.GetKeyDown(KeyCode.E))
+		{
+			Player.WeaponController.SetNextWeaponActive();
+		}
+
+		if(Input.GetMouseButtonDown(0))
+		{
+			Player.WeaponController.UseRangeWeapon(dir);
+		}
 	}
 }
