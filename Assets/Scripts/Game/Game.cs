@@ -8,4 +8,5 @@ public class Game : CSingleton<Game>
 	public Transform ProbesHolder;
 
 	public HUD HUD;
+	public EarthController Earth;
 }

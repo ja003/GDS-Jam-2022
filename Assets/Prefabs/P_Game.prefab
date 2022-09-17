@@ -1550,6 +1550,7 @@ Transform:
   - {fileID: 4341687137869571862}
   - {fileID: 4341687137952860713}
   - {fileID: 4516092711178407832}
+  - {fileID: 2762075182758395302}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1568,6 +1569,38 @@ MonoBehaviour:
   ProjectilesHolder: {fileID: 4341687137337744091}
   ProbesHolder: {fileID: 1534718538}
   HUD: {fileID: 4341687137877000437}
+  Earth: {fileID: 4031095062332846122}
+--- !u!1 &6163753268163628876
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2762075182758395302}
+  m_Layer: 0
+  m_Name: ScienceSpawnPlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2762075182758395302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6163753268163628876}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.23, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4341687138347220183}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6664062445144979606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,6 +1873,23 @@ MonoBehaviour:
   cooldown: 5
   radius: 1
   probePrefab: {fileID: 2656153315860011210, guid: 132912bad1b61f74ab40b7ca123d2eb4, type: 3}
+--- !u!114 &4031095062332846122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3884269776301020450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de90f33ace4eb44e82e36919d6fba96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScientistPrefab: {fileID: 4380009079743231814, guid: 6dbaceffcc97c2a4282ea240429e193e, type: 3}
+  ScientistSpawnPlace: {fileID: 2762075182758395302}
+  MinXP: 1
+  MinCooldown: 5
+  MaxCooldown: 15
 --- !u!4 &4516092711178407832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 72a26c4bf1bdc6349a857846260c77eb, type: 3}

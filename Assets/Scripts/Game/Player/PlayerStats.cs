@@ -17,5 +17,7 @@ public class PlayerStats : PlayerBehaviour
 		XP += pValue;
 		game.HUD.SetXP(XP);
 		Player.WeaponController.TryUnlockWeapon(XP);
-	}
+		game.Earth.OnXPChanged(XP);
+
+    }
 }
