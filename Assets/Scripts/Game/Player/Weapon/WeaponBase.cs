@@ -57,7 +57,7 @@ public abstract class WeaponBase : GameBehaviour
 
 		if (Ammo <= 0)
 		{
-			if(Magazines > 0)
+			if(Magazines > 0 || HasInfinityAmmo)
 			{
 				UI.SetReloading(true);
 				DoInTime(Reload, Cooldown);

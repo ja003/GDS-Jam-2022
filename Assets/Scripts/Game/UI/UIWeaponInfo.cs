@@ -44,8 +44,8 @@ public class UIWeaponInfo : GameBehaviour
 
 	internal void Refresh(WeaponBase pWeapon)
 	{
-		Ammo.text = pWeapon.Ammo.ToString();
-		Magazines.text = pWeapon.Magazines.ToString();
+		Ammo.text = pWeapon.HasInfinityAmmo ? "" : pWeapon.Ammo.ToString();
+		Magazines.text = pWeapon.HasInfinityAmmo ? "" : pWeapon.Magazines.ToString();
 	}
 
 	internal void SetSelected(bool pValue)

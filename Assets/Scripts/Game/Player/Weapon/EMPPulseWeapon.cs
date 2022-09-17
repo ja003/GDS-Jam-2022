@@ -13,7 +13,9 @@ public class EMPPulseWeapon : WeaponBase
 		DoInTime(() =>
 		{
 			particles.enableEmission = false;
-		}, 1);
+		}, Cooldown);
+
+		DecreaseAmmo();
 	}
 
 }
