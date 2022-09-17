@@ -80,6 +80,7 @@ public abstract class WeaponBase : GameBehaviour
 		Ammo = AmmoPerMagazine;
 		Magazines--;
 		UI.Refresh(this);
+		UI.SetReloading(false);
 	}
 
 	internal void TryUnlock(int pXP)

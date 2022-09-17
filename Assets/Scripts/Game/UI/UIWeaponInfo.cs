@@ -12,11 +12,13 @@ public class UIWeaponInfo : GameBehaviour
 	[SerializeField] TextMeshProUGUI Magazines;
 	[SerializeField] Image Icon;
 	[SerializeField] Image Selector;
+	[SerializeField] Image Reload;
 
 	internal void Init(WeaponConfig pConfig)
 	{
 		Name.text = pConfig.Name;
 		Icon.sprite = pConfig.Icon;
+		SetReloading(false);
 	}
 
 	//public void SetAmmo(int pValue)
@@ -31,7 +33,7 @@ public class UIWeaponInfo : GameBehaviour
 
 	internal void SetReloading(bool pValue)
 	{
-		Ammo.text = "reloading";
+		Reload.enabled = pValue;
 	}
 
 	internal void SetAvailable(bool pValue)
