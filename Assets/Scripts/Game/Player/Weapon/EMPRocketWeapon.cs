@@ -12,7 +12,7 @@ public class EMPRocketWeapon : WeaponBase
 
 	protected override void Use(Vector3 pDirection)
 	{
-		Debug.Log("USE rocket");
+		//Debug.Log("USE rocket");
 		var projectileInst = Instantiate(ProjectilePrefab, transform.position + pDirection.normalized * ProjectileSpawnOffset, Quaternion.identity);
 		projectileInst.GetComponent<Projectile>().Shoot(pDirection.normalized * Power, Damage);
 		projectileInst.transform.SetParent(game.ProjectilesHolder);
