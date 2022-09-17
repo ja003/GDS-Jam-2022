@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Game : CSingleton<Game>
 {
-
+	public Transform ProjectilesHolder;
 }

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5605795125840912996}
   - component: {fileID: 5605795125840912997}
   - component: {fileID: 5605795125840912994}
-  - component: {fileID: -3124832752628392711}
+  - component: {fileID: 3878708386823089590}
   m_Layer: 0
-  m_Name: P_Weapon_EmpRocket
+  m_Name: P_Weapon_HumanAbductor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-3124832752628392711
+--- !u!114 &3878708386823089590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,11 +107,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5605795125840912993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04a6bba52ce1c094fad8e359e62b05d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a2fb18ff5215a6448290b602c6454c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Ammo: 0
   Cooldown: 0
-  ProjectilePrefab: {fileID: 2074769729175952596, guid: acd0be8ca08ad224bbd2693310d19c37, type: 3}
-  Power: 100
-  ProjectileSpawnOffset: 1
+  range: 2

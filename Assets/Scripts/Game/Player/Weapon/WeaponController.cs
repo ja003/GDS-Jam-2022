@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,14 @@ public class WeaponController : MonoBehaviour
 			return;
 		}
 		Weapons[0].Use(Vector3.zero);
+	}
+
+	internal void SetNextWeaponActive()
+	{
+		ActiveRangeWeapon++;
+		if(ActiveRangeWeapon >= Weapons.Count)
+			ActiveRangeWeapon = 1;
+		Debug.Log($"Active weapon = {ActiveRangeWeapon} = {Weapons[ActiveRangeWeapon].ToString()}");
 	}
 
 	public void UseRangeWeapon(Vector3 pDirection)
