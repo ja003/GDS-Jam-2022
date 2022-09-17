@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class HUD : MonoBehaviour
+public class HUD : GameBehaviour
 {
 	public UIWeaponHUD Weapon;
 
@@ -18,6 +18,11 @@ public class HUD : MonoBehaviour
 
 	internal void SetDetectionMeter(int pValue)
 	{
-		DetectionMeter.text = pValue + "/10";
+		DetectionMeter.text = pValue + "/100";
+	}
+
+	internal void OnEndGame()
+	{
+		gameObject.SetActive(false);
 	}
 }

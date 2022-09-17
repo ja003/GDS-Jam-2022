@@ -45,5 +45,9 @@ public class PlayerInput : PlayerBehaviour
 		{
 			Player.Stats.AddXP(1);
 		}
-	}
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Player.Stats.AddDetection(25);
+        }
+    }
 }

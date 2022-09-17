@@ -26,6 +26,11 @@ public class PlayerStats : PlayerBehaviour
 		DetectionMeter += pValue;
         game.HUD.SetDetectionMeter(DetectionMeter);
 
+		if(DetectionMeter >= 100)
+		{
+			game.EndGame();
+		}
+
     }
 
 }
