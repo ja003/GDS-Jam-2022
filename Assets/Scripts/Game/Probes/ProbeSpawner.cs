@@ -30,8 +30,9 @@ public class ProbeSpawner : GameBehaviour
 
 			var newInst = Instantiate(probePrefab, spawnPoint, Quaternion.identity);
 			newInst.transform.parent = game.ProbesHolder;
+            newInst.gameObject.SetActive(true);
 
-			cooldownRemainig = cooldown;
+            cooldownRemainig = cooldown;
 		}
     }
 }

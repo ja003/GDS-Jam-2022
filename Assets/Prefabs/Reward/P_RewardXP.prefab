@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8205686533309207204}
   - component: {fileID: 2056978330152778740}
   m_Layer: 0
-  m_Name: P_RewardObject
+  m_Name: P_RewardXP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Amount: 1
-  Type: 1
+  Type: 0
 --- !u!54 &2056978330152778740
 Rigidbody:
   m_ObjectHideFlags: 0

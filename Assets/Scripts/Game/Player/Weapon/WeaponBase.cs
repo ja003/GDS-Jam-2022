@@ -6,32 +6,26 @@ using UnityEngine;
 public abstract class WeaponBase : GameBehaviour
 {
 	public WeaponConfig Config;
-	public int Ammo { get; private set; }
-	public int Magazines { get; private set; }
+	public int LeftInMagazine { get; private set; }
+	public int TotalAmmo { get; private set; }
 
 	UIWeaponInfo UI;
 	public bool IsUnlocked;
 
-	bool IsSelected;
-	bool IsReloading;
+	public bool IsReloading;
 
 	public void Init()
 	{
-		Ammo = Config.AmmoPerMagazine;
-		UI = game.HUD.Weapon.CreateWeaponInfoUI(Config);
+		LeftInMagazine = Config.AmmoPerMagazine;
+        TotalAmmo = Config.TotalAmmo;
+        
+        UI = game.HUD.Weapon.CreateWeaponInfoUI(Config);
 		UI.gameObject.SetActive(IsUnlocked);
 		UI.Refresh(this);
-		SetSelected(false);
 	}
 
 	public void TryUse(Vector3 pDirection = new Vector3())
 	{
-		if(!IsSelected)
-		{
-			Debug.LogError("Not selected!");
-			return;
-		}
-
 		if(IsReloading)
 		{
 			//Debug.Log("reloading");
@@ -48,21 +42,22 @@ public abstract class WeaponBase : GameBehaviour
 
 	public bool HasAmmo()
 	{
-		return Ammo > 0 || Config.HasInfinityAmmo;
+		return LeftInMagazine > 0 || Config.HasInfinityAmmo;
 	}
 
 	protected abstract void Use(Vector3 pDirection);
 
 	protected void DecreaseAmmo()
 	{
-		Ammo--;
+		TotalAmmo--;
+		LeftInMagazine--;
 		UI.Refresh(this);
 		//Debug.Log("DecreaseAmmo " + Ammo);
 
-		if (Ammo <= 0)
+		if (TotalAmmo <= 0 || LeftInMagazine <= 0)
 		{
 			//even infinity ammo weapon has to reaload
-			if(Magazines > 0 || Config.HasInfinityAmmo)
+			if(TotalAmmo > 0 || Config.HasInfinityAmmo)
 			{
 				UI.SetReloading(true);
 				IsReloading = true;
@@ -77,20 +72,16 @@ public abstract class WeaponBase : GameBehaviour
 
 	public void AddAmmo(int pValue)
 	{
-		Ammo += pValue;
+		TotalAmmo += pValue;
         UI.Refresh(this);
+		if (LeftInMagazine <= 0)
+			Reload();
     }
 
-    internal void SetSelected(bool pValue)
-	{
-		IsSelected = true;
-		UI.SetSelected(pValue);
-	}
 
 	void Reload()
 	{
-		Ammo = Config.AmmoPerMagazine;
-		Magazines--;
+		LeftInMagazine = Math.Min(Config.AmmoPerMagazine, TotalAmmo);
 		UI.Refresh(this);
 		UI.SetReloading(false);
 		IsReloading = false;

@@ -33,7 +33,7 @@ public class PlayerInput : PlayerBehaviour
 
         if (Input.GetMouseButtonDown(0))
 		{
-			Player.WeaponController.UseRangeWeapon(dir);
+			Player.WeaponController.UseEMPRocket(dir);
 		}
         if (Input.GetMouseButtonDown(1))
         {

@@ -9,9 +9,7 @@ public class UIWeaponInfo : GameBehaviour
 {
 	[SerializeField] TextMeshProUGUI Name;
 	[SerializeField] TextMeshProUGUI Ammo;
-	[SerializeField] TextMeshProUGUI Magazines;
 	[SerializeField] Image Icon;
-	[SerializeField] Image Selector;
 	[SerializeField] Image Reload;
 
 	internal void Init(WeaponConfig pConfig)
@@ -21,16 +19,6 @@ public class UIWeaponInfo : GameBehaviour
 		SetReloading(false);
 	}
 
-	//public void SetAmmo(int pValue)
-	//{
-	//	ammo.text = pValue.ToString();
-	//}
-
-	//public void SetMagazines(int pValue)
-	//{
-	//	magazines.text = pValue.ToString();
-	//}
-
 	internal void SetReloading(bool pValue)
 	{
 		Reload.enabled = pValue;
@@ -38,19 +26,19 @@ public class UIWeaponInfo : GameBehaviour
 
 	internal void SetAvailable(bool pValue)
 	{
-		Debug.Log("SetAvailable " + pValue);
+		//Debug.Log("SetAvailable " + pValue);
 		SetAlpha(pValue ? 1 : 0.1f);
 	}
 
 	internal void Refresh(WeaponBase pWeapon)
 	{
-		Ammo.text = pWeapon.Config.HasInfinityAmmo ? "" : pWeapon.Ammo.ToString();
-		Magazines.text = pWeapon.Config.HasInfinityAmmo ? "" : pWeapon.Magazines.ToString();
-	}
+		if(!pWeapon.Config.HasInfinityAmmo && pWeapon.TotalAmmo < 0)
+		{
+			Debug.LogError("bad ammo");
+		}
+		Ammo.text = pWeapon.Config.HasInfinityAmmo ? "" : pWeapon.TotalAmmo.ToString();
+        SetAvailable(pWeapon.HasAmmo());
 
-	internal void SetSelected(bool pValue)
-	{
-		if(Selector != null)
-			Selector.enabled = pValue;
-	}
+    }
+
 }

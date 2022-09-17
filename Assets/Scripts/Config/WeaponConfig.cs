@@ -9,7 +9,7 @@ public class WeaponConfig : ScriptableObject
 	public EWeapon ID;
 	public Sprite Icon;
 	public string Name;
-	public int Magazines;
+	public int TotalAmmo;
 	public int AmmoPerMagazine;
 	public int Cooldown;
 	public bool HasInfinityAmmo;
