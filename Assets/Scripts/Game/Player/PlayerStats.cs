@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : PlayerBehaviour
 {
-	public int DetectionMeter;
+	public float DetectionMeter;
 	public int XP;
 
 	private void Awake()
@@ -21,12 +21,12 @@ public class PlayerStats : PlayerBehaviour
 
 	}
 
-	public void AddDetection(int pValue)
+	public void AddDetection(float pValue)
 	{
 		DetectionMeter += pValue;
         game.HUD.SetDetectionMeter(DetectionMeter);
 
-		if(DetectionMeter >= 100)
+		if(DetectionMeter >= 100f)
 		{
 			game.EndGame();
 		}

@@ -16,9 +16,9 @@ public class HUD : GameBehaviour
 		XP.text = pValue + " XP";
 	}
 
-	internal void SetDetectionMeter(int pValue)
+	internal void SetDetectionMeter(float pValue)
 	{
-		DetectionMeter.text = pValue + "/100";
+		DetectionMeter.text = (int)pValue + "/100";
 	}
 
 	internal void OnEndGame()

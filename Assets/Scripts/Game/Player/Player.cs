@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
 	{
-		var probe = collision.gameObject.GetComponent<BasicProbe>();
+		var probe = collision.gameObject.GetComponent<Probe>();
 		if (probe != null)
 		{
 			probe.OnHit(666);

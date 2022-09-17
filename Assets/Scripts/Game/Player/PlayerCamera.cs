@@ -12,7 +12,7 @@ public class PlayerCamera : MonoBehaviour
 
 	private void Awake()
 	{
-		if(target == null)
+		if (target == null)
 		{
             target = FindObjectOfType<Player>().transform;
 		}
@@ -20,7 +20,9 @@ public class PlayerCamera : MonoBehaviour
 	private void Start()
     {
         // You can also specify your own offset from inspector as it is public variable
-        offset = transform.position - target.position;
+		Vector3 properPosition = new Vector3(target.position.x, target.position.y, transform.position.z);
+		transform.position = properPosition;
+		offset = transform.position - target.position;
     }
 
     private void LateUpdate()

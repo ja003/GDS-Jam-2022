@@ -7,7 +7,7 @@ public class ProbeSpawner : GameBehaviour
 	[SerializeField] private float cooldown;
 	[SerializeField] private float radius;
 
-	[SerializeField] private BasicProbe probePrefab;
+	[SerializeField] private GameObject probePrefab;
 
 	float cooldownRemainig;
 
@@ -28,7 +28,7 @@ public class ProbeSpawner : GameBehaviour
 			Vector3 direction = new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle));
 			Vector3 spawnPoint = direction * radius;
 
-			var newInst = Instantiate(probePrefab, spawnPoint, Quaternion.identity);
+			var newInst = Instantiate(probePrefab, spawnPoint, probePrefab.transform.rotation);
 			newInst.transform.parent = game.ProbesHolder;
             newInst.gameObject.SetActive(true);
 
