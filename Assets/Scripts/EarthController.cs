@@ -9,12 +9,18 @@ public class EarthController : GameBehaviour
     [SerializeField] Scientist ScientistPrefab;
     [SerializeField] Transform ScientistSpawnPlace;
 
+    [SerializeField] float RotationSpeed = 1;
     [SerializeField] int MinXP = 1;
 
     [SerializeField] int MinCooldown = 5;
     [SerializeField] int MaxCooldown = 15;
 
     Scientist ActiveScientist;
+
+    private void FixedUpdate()
+    {
+        transform.Rotate(Vector3.up, -RotationSpeed);
+    }
 
     bool HasScienceStarted;
     private void StartScience()

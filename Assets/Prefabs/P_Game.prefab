@@ -1550,7 +1550,6 @@ Transform:
   - {fileID: 4341687137869571862}
   - {fileID: 4341687137952860713}
   - {fileID: 4516092711178407832}
-  - {fileID: 2762075182758395302}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1593,13 +1592,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6163753268163628876}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4341687138347220183}
-  m_RootOrder: 5
+  m_Father: {fileID: 4516092711178407832}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6664062445144979606
 GameObject:
@@ -1792,7 +1791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72a26c4bf1bdc6349a857846260c77eb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9957327
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72a26c4bf1bdc6349a857846260c77eb, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1804,7 +1803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72a26c4bf1bdc6349a857846260c77eb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.09228373
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72a26c4bf1bdc6349a857846260c77eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1816,7 +1815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72a26c4bf1bdc6349a857846260c77eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -10.59
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 72a26c4bf1bdc6349a857846260c77eb, type: 3}
       propertyPath: m_Name
@@ -1887,6 +1886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScientistPrefab: {fileID: 4380009079743231814, guid: 6dbaceffcc97c2a4282ea240429e193e, type: 3}
   ScientistSpawnPlace: {fileID: 2762075182758395302}
+  RotationSpeed: 1
   MinXP: 1
   MinCooldown: 5
   MaxCooldown: 15
