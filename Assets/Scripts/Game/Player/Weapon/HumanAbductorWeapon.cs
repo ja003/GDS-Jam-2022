@@ -7,6 +7,7 @@ public class HumanAbductorWeapon : WeaponBase
 {
 	[SerializeField] float range = 2;
 	[SerializeField] float Force = 1f;
+	[SerializeField] float NeededDist = 1;
 	[SerializeField] LayerMask ScientistLayer;
 
 	Scientist targetedScientist;
@@ -37,8 +38,16 @@ public class HumanAbductorWeapon : WeaponBase
 		if (targetedScientist == null) 
 			return;
 
-        Vector3 dir = (transform.position - targetedScientist.transform.position).normalized;
-        targetedScientist.AddForce(dir * Force);
+		Vector3 dir = transform.position - targetedScientist.transform.position;
+		float dist = dir.magnitude;
+		if (dist < NeededDist)
+		{
+			Destroy(targetedScientist.gameObject);
+			return;
+		}
+
+
+        targetedScientist.AddForce(dir.normalized * Force);
 
     }
 
