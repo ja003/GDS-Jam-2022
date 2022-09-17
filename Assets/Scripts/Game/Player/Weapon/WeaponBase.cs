@@ -16,6 +16,7 @@ public abstract class WeaponBase : GameBehaviour
 	public bool HasInfinityAmmo;
 
 	bool IsSelected;
+	bool IsReloading;
 
 	public void Init()
 	{
@@ -31,6 +32,12 @@ public abstract class WeaponBase : GameBehaviour
 		if(!IsSelected)
 		{
 			Debug.LogError("Not selected!");
+			return;
+		}
+
+		if(IsReloading)
+		{
+			Debug.Log("reloading");
 			return;
 		}
 
@@ -60,6 +67,7 @@ public abstract class WeaponBase : GameBehaviour
 			if(Magazines > 0 || HasInfinityAmmo)
 			{
 				UI.SetReloading(true);
+				IsReloading = true;
 				DoInTime(Reload, Cooldown);
 			}
 			else
@@ -81,6 +89,7 @@ public abstract class WeaponBase : GameBehaviour
 		Magazines--;
 		UI.Refresh(this);
 		UI.SetReloading(false);
+		IsReloading = false;
 	}
 
 	internal void TryUnlock(int pXP)
