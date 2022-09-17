@@ -24,7 +24,7 @@ public abstract class WeaponBase : GameBehaviour
 		SetSelected(false);
 	}
 
-	public void TryUse(Vector3 pDirection)
+	public void TryUse(Vector3 pDirection = new Vector3())
 	{
 		if(!IsSelected)
 		{

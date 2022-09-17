@@ -20,20 +20,24 @@ public class PlayerInput : PlayerBehaviour
 
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			Player.WeaponController.UseMeleeWeapon();
+			Player.WeaponController.UseHumanAbductor();
 		}
-		if(Input.GetKeyDown(KeyCode.E))
-		{
-			Player.WeaponController.SetNextWeaponActive();
-		}
+		//if(Input.GetKeyDown(KeyCode.E))
+		//{
+		//	Player.WeaponController.SetNextWeaponActive();
+		//}
 
 		if(Input.GetMouseButtonDown(0))
 		{
 			Player.WeaponController.UseRangeWeapon(dir);
 		}
+        if (Input.GetMouseButtonDown(1))
+        {
+            Player.WeaponController.UseMeleeWeapon();
+        }
 
-		// debug
-		if(Input.GetKeyDown(KeyCode.Q))
+        // debug
+        if (Input.GetKeyDown(KeyCode.Q))
 		{
 			Player.PlayerStats.AddXP(1);
 		}
