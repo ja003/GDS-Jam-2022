@@ -10,11 +10,13 @@ public class UIWeaponInfo : GameBehaviour
 	[SerializeField] TextMeshProUGUI Name;
 	[SerializeField] TextMeshProUGUI Ammo;
 	[SerializeField] TextMeshProUGUI Magazines;
+	[SerializeField] Image Icon;
 	[SerializeField] Image Selector;
 
-	internal void Init(WeaponConfig pWeaponConfig)
+	internal void Init(WeaponConfig pConfig)
 	{
-		Name.text = pWeaponConfig.name;
+		Name.text = pConfig.Name;
+		Icon.sprite = pConfig.Icon;
 	}
 
 	//public void SetAmmo(int pValue)
