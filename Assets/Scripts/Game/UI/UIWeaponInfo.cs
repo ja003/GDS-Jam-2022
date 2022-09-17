@@ -7,8 +7,15 @@ using UnityEngine.UI;
 
 public class UIWeaponInfo : GameBehaviour
 {
-	[SerializeField] TextMeshProUGUI ammo;
-	[SerializeField] TextMeshProUGUI magazines;
+	[SerializeField] TextMeshProUGUI Name;
+	[SerializeField] TextMeshProUGUI Ammo;
+	[SerializeField] TextMeshProUGUI Magazines;
+	[SerializeField] Image Selector;
+
+	internal void Init(WeaponConfig pWeaponConfig)
+	{
+		Name.text = pWeaponConfig.name;
+	}
 
 	//public void SetAmmo(int pValue)
 	//{
@@ -22,7 +29,7 @@ public class UIWeaponInfo : GameBehaviour
 
 	internal void SetReloading(bool pValue)
 	{
-		ammo.text = "reloading";
+		Ammo.text = "reloading";
 	}
 
 	internal void SetAvailable(bool pValue)
@@ -33,7 +40,13 @@ public class UIWeaponInfo : GameBehaviour
 
 	internal void Refresh(WeaponBase pWeapon)
 	{
-		ammo.text = pWeapon.Ammo.ToString();
-		magazines.text = pWeapon.Magazines.ToString();
+		Ammo.text = pWeapon.Ammo.ToString();
+		Magazines.text = pWeapon.Magazines.ToString();
+	}
+
+	internal void SetSelected(bool pValue)
+	{
+		if(Selector != null)
+			Selector.enabled = pValue;
 	}
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class HUD : MonoBehaviour
 {
-	public List<UIWeaponInfo> WeaponInfos;
+	public UIWeaponHUD Weapon;
 
 	[SerializeField] TextMeshProUGUI XP;
 	[SerializeField] TextMeshProUGUI DetectionMeter;
