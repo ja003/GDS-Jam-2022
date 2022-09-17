@@ -114,5 +114,6 @@ MonoBehaviour:
   Magazines: 0
   Cooldown: 0
   IsUnlocked: 0
+  XPRequired: 3
   HasInfinityAmmo: 1
   range: 2

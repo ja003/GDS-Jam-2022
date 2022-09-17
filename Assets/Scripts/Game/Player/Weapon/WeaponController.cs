@@ -11,6 +11,7 @@ public class WeaponController : GameBehaviour
 
 	public int ActiveRangeWeapon = 1;
 
+
 	private void Awake()
 	{
 		for(int i = 0; i < WeaponPrefabs.Count; i++)
@@ -51,5 +52,14 @@ public class WeaponController : GameBehaviour
 			return;
 		}
 		Weapons[ActiveRangeWeapon].TryUse(pDirection);
+	}
+
+	internal void TryUnlockWeapon(int pXP)
+	{
+		foreach(var weapon in Weapons)
+		{
+			if(weapon.IsUnlocked) continue;
+			weapon.TryUnlock(pXP);
+		}
 	}
 }

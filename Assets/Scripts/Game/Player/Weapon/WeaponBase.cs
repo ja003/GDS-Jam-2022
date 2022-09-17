@@ -11,6 +11,7 @@ public abstract class WeaponBase : GameBehaviour
 	public int Cooldown;
 	UIWeaponInfo UI;
 	public bool IsUnlocked;
+	[SerializeField] int XPRequired;
 	public bool HasInfinityAmmo;
 
 	public void Init(UIWeaponInfo pUIWeaponInfo)
@@ -60,11 +61,14 @@ public abstract class WeaponBase : GameBehaviour
 		UI.Refresh(this);
 	}
 
-	public void Unlock()
+	internal void TryUnlock(int pXP)
 	{
-		IsUnlocked = true;
-		UI.Refresh(this);
+		if(pXP >= XPRequired)
+		{
+			IsUnlocked = true;
+			UI.Refresh(this);
 
-		UI.gameObject.SetActive(IsUnlocked);
+			UI.gameObject.SetActive(IsUnlocked);
+		}
 	}
 }
