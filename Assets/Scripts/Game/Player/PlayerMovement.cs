@@ -6,6 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
     [SerializeField] float speed = 1;
+    [SerializeField] ForceMode mode = ForceMode.Force;
+    [SerializeField] float maxVelocity = 200f;
+
+    [SerializeField] float maxDistanceFromCenter = 100f, maxEscapeFromBounds = 2f;
+
+    Vector3 playgroundCentre => Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -14,23 +20,47 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        Debug.Log($"velocity: {rb.velocity.magnitude}");
+        if (rb.velocity.magnitude > maxVelocity) rb.velocity = rb.velocity.normalized * maxVelocity;
+
+        var forceToAdd = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
         {
-            rb.AddForce(Vector3.up * speed * Time.deltaTime);
+            forceToAdd+=(Vector3.up);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rb.AddForce(Vector3.left * speed * Time.deltaTime);
+            forceToAdd += (Vector3.left);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rb.AddForce(Vector3.down * speed * Time.deltaTime);
+            forceToAdd += (Vector3.down);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rb.AddForce(Vector3.right * speed * Time.deltaTime);
+            forceToAdd += (Vector3.right);
         }
+        forceToAdd = forceToAdd.normalized;
+
+        var distanceFromCenter = Vector3.Distance(rb.position, playgroundCentre);
+        if (distanceFromCenter > maxDistanceFromCenter)
+        {
+            var toCenter = (playgroundCentre - rb.position).normalized;
+            var lerpFactor = Mathf.Min(maxEscapeFromBounds, distanceFromCenter - maxDistanceFromCenter) / maxEscapeFromBounds;
+            forceToAdd = Vector3.Lerp(forceToAdd, toCenter, lerpFactor).normalized;
+        }
+        forceToAdd *= speed * Time.deltaTime;
+        rb.AddForce(forceToAdd);
+        //rb.velocity = forceToAdd;
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(playgroundCentre, maxDistanceFromCenter);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(playgroundCentre, maxDistanceFromCenter + maxEscapeFromBounds);
     }
 }
