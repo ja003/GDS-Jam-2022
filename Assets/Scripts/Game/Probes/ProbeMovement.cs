@@ -54,8 +54,7 @@ public class ProbeMovement : MonoBehaviour
 			rb.AddForce(force);
 
 			// rotation
-			if(rb.velocity.magnitude > 0)
-				transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+			transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
 		}
 
 		// particles shutdown

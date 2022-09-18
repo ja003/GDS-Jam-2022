@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HUD : GameBehaviour
 {
 	public UIWeaponHUD Weapon;
 
 	[SerializeField] TextMeshProUGUI XP;
-	[SerializeField] TextMeshProUGUI DetectionMeter;
+	[SerializeField] Slider DetectionMeter;
 
 	internal void SetXP(int pValue)
 	{
@@ -18,7 +19,7 @@ public class HUD : GameBehaviour
 
 	internal void SetDetectionMeter(float pValue)
 	{
-		DetectionMeter.text = (int)pValue + "/100";
+		DetectionMeter.value = pValue / 100f;
 	}
 
 	internal void OnEndGame()
