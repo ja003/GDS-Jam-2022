@@ -10,12 +10,19 @@ public class EMPRocketWeapon : WeaponBase
 
 	[SerializeField] float ProjectileSpawnOffset;
 
-	protected override void Use(Vector3 pDirection)
+	AudioSource audioPlayer;
+    private void Start()
+    {
+		audioPlayer = GetComponent<AudioSource>();
+    }
+
+    protected override void Use(Vector3 pDirection)
 	{
 		//Debug.Log("USE rocket");
 		var projectileInst = Instantiate(ProjectilePrefab, transform.position + pDirection.normalized * ProjectileSpawnOffset, Quaternion.identity);
 		projectileInst.GetComponent<Projectile>().Shoot(pDirection.normalized * Power, Damage);
 		projectileInst.transform.SetParent(game.ProjectilesHolder);
+		audioPlayer?.Play();
 
 		DecreaseAmmo();
 	}

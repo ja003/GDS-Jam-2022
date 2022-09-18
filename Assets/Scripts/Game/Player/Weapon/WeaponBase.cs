@@ -37,7 +37,7 @@ public abstract class WeaponBase : GameBehaviour
 
 	public void TryUse(Vector3 pDirection = new Vector3())
 	{
-		if(IsReloading)
+		if (IsReloading)
 		{
 			//Debug.Log("reloading");
 			return;

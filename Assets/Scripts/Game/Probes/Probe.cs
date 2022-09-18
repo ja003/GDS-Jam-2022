@@ -11,6 +11,9 @@ public class Probe : MonoBehaviour, IDamagable
 	[SerializeField] private float RewardAmmoChance = 0.5f;
 	[SerializeField] private int MinRewardAmmo = 5;
 	[SerializeField] private int MaxRewardAmmo = 15;
+	[SerializeField] AudioClip DieSound;
+	[SerializeField] private float DieAnimationDuration;
+
 
 	public int TotalHealth = 1;
 	private int HealthLeft = 1;
@@ -46,6 +49,28 @@ public class Probe : MonoBehaviour, IDamagable
 
 		if (HealthLeft <= 0)
 		{
+			Die();
+		}
+	}
+
+	void Die()
+	{
+		Utils.StartIndependentCoroutine(impl);
+
+		IEnumerator impl(GameObject runner)
+        {
+			var audioPlayer = runner.AddComponent<AudioSource>();
+			audioPlayer.PlayOneShot(DieSound);
+			var originalScale = transform.localScale;
+			foreach (var y in Utils.MakeInterpolation(DieAnimationDuration, t =>
+			{
+				t = 1 - t;
+				t = t * t * t;
+				transform.localScale = originalScale * t;
+
+			})) yield return y;
+
+
 			//reward Ammo
 			if (Random.Range(0, 1f) > RewardAmmoChance)
 			{
@@ -68,8 +93,11 @@ public class Probe : MonoBehaviour, IDamagable
 			rewardXP.Type = EReward.XP;
 			rewardXP.Amount = Random.Range(MinRewardAmmo, MaxRewardAmmo) + TotalHealth * 3;
 			rewardXP.OnSpawn();
-
 			Destroy(gameObject);
+
+			yield return new WaitUntil(() => !audioPlayer.isPlaying);
+			Destroy(runner);
 		}
+
 	}
 }
