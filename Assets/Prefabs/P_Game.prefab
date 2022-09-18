@@ -2275,7 +2275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextBox: {fileID: 7686047133899177483}
   HiddenY: 50
-  AnimationSpeed: 0.2
+  AnimationSpeed: 0.5
   Messages:
   - MessageType: 0
     MessageText: US army pilot claims he saw strange flying object.
