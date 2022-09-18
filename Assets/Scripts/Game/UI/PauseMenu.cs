@@ -33,11 +33,15 @@ public class PauseMenu : GameBehaviour
 		ControlsCanvas.alpha = 0;
 
 		MenuAnimator.Play("A_PauseMenuOpen");
+
+		game.HUD.Hide();
 	}
 
 	private void Resume()
 	{
 		MenuAnimator.Play("A_PauseMenuClose");
+		game.HUD.Show();
+
 	}
 
 	private void ControlsToPause()

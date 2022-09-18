@@ -2494,6 +2494,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4341687137877000436}
   - component: {fileID: 4341687137877000437}
+  - component: {fileID: 7406456277183146537}
+  - component: {fileID: 6059685548505106592}
   m_Layer: 0
   m_Name: HUD
   m_TagString: Untagged
@@ -2537,7 +2539,38 @@ MonoBehaviour:
   Weapon: {fileID: 6991822037679818850}
   XP: {fileID: 713207842}
   DetectionMeter: {fileID: 967369900}
-  PauseMenu: {fileID: 6650211168038584293}
+--- !u!95 &7406456277183146537
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4341687137877000439}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fec7b102824c1bc4cb968e29b24e774c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!225 &6059685548505106592
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4341687137877000439}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4341687137952860712
 GameObject:
   m_ObjectHideFlags: 0
@@ -2699,6 +2732,7 @@ MonoBehaviour:
   RewardsHolder: {fileID: 5961270212760526026}
   Player: {fileID: 6792785478849890970}
   HUD: {fileID: 4341687137877000437}
+  PauseMenu: {fileID: 6650211168038584293}
   Earth: {fileID: 4031095062332846122}
   Curtain: {fileID: 22558823}
   EndGameScreen: {fileID: 1900996042}

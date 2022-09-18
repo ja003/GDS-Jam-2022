@@ -14,6 +14,8 @@ public class Game : CSingleton<Game>
 	public Player Player;
 
 	public HUD HUD;
+	[SerializeField] public PauseMenu PauseMenu;
+
 	public ScienceController Earth;
 
 	[SerializeField] UICurtain Curtain;
@@ -29,6 +31,8 @@ public class Game : CSingleton<Game>
 		btnMenu.onClick.AddListener(Menu);
 
 		HUD.Init();
+		PauseMenu.gameObject.SetActive(false);
+
 		Curtain.SetFade(false, () => { HasGameStarted = true; });
 	}
 
@@ -56,7 +60,7 @@ public class Game : CSingleton<Game>
 
 	internal void PauseGame()
 	{
-		HUD.PauseMenu.Open();
+		PauseMenu.Open();
 	}
 
 	private void Menu()

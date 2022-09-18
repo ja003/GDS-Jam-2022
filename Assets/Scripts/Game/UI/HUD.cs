@@ -11,14 +11,11 @@ public class HUD : GameBehaviour
 
 	[SerializeField] TextMeshProUGUI XP;
 	[SerializeField] Slider DetectionMeter;
-	[SerializeField] public PauseMenu PauseMenu;
-
 
 	internal void Init()
 	{
 		SetXP(0);
 		SetDetectionMeter(0);
-		PauseMenu.gameObject.SetActive(false);
 	}
 
 	internal void SetXP(int pValue)
@@ -36,4 +33,13 @@ public class HUD : GameBehaviour
 		gameObject.SetActive(false);
 	}
 
+	internal void Hide()
+	{
+		animator.Play("A_HUD_Hide");
+	}
+
+	internal void Show()
+	{
+		animator.Play("A_HUD_Show");
+	}
 }
