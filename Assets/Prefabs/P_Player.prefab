@@ -131,6 +131,9 @@ MonoBehaviour:
   _player: {fileID: 703362615823409304}
   DetectionMeter: 0
   XP: 0
+  XPForNextStage:
+  - 0
+  SoundtrackManager: {fileID: 0}
 --- !u!65 &5346137016454545706
 BoxCollider:
   m_ObjectHideFlags: 0
