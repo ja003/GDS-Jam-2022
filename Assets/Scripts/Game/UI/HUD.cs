@@ -11,6 +11,7 @@ public class HUD : GameBehaviour
 
 	[SerializeField] TextMeshProUGUI XP;
 	[SerializeField] Slider DetectionMeter;
+	[SerializeField] MessagePanel MessageController;
 
 	internal void Init()
 	{
@@ -26,6 +27,11 @@ public class HUD : GameBehaviour
 	internal void SetDetectionMeter(float pValue)
 	{
 		DetectionMeter.value = pValue / 100f;
+	}
+
+	internal void ShowMessage(EMessageType pType)
+	{
+		MessageController.ShowMessage(pType);
 	}
 
 	internal void OnEndGame()
