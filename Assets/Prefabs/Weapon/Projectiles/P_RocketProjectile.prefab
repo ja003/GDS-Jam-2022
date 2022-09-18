@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3669822291021162058}
   - component: {fileID: 6278142330690605037}
   - component: {fileID: 5238692018675366091}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: P_RocketProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f094502bb47c2468cee7730ee79c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  angleOffset: {x: 90, y: 0, z: 0}
 --- !u!136 &5238692018675366091
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -195,6 +196,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f642de88711dcfe48bf907c832a7c35a, type: 3}
       propertyPath: m_Name
       value: Rocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f642de88711dcfe48bf907c832a7c35a, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f642de88711dcfe48bf907c832a7c35a, type: 3}
