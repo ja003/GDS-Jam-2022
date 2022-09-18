@@ -54,7 +54,7 @@ public class Probe : GameBehaviour, IDamagable
 		{
 			if (detector.IsTriggered)
 			{
-				playerStats.AddDetection(Time.deltaTime * 3f);
+				playerStats.AddDetection(Time.deltaTime * 7f);
 
 				game.HUD.ShowMessage(EMessageType.Detected);
 			}

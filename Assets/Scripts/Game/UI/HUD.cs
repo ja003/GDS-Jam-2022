@@ -12,6 +12,7 @@ public class HUD : GameBehaviour
 	[SerializeField] TextMeshProUGUI XP;
 	[SerializeField] Slider DetectionMeter;
 	[SerializeField] MessagePanel MessageController;
+	[SerializeField] EndGame EndController;
 
 	internal void Init()
 	{
@@ -36,6 +37,7 @@ public class HUD : GameBehaviour
 
 	internal void OnEndGame()
 	{
+		EndController.SetScore(XP.text);
 		gameObject.SetActive(false);
 	}
 
