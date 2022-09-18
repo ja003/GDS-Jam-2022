@@ -10,6 +10,7 @@ public class Game : CSingleton<Game>
 	public Transform ProjectilesHolder;
 	public Transform ProbesHolder;
 	public Transform RewardsHolder;
+	public Transform AsteroidsHolder;
 
 	public Player Player;
 

@@ -31,6 +31,7 @@ public class PlayerMovement : GameBehaviour
 		if(rb.velocity.magnitude > maxVelocity) rb.velocity = rb.velocity.normalized * maxVelocity;
 
 		var forceToAdd = Vector3.zero;
+
 		if(Input.GetKey(KeyCode.W))
 		{
 			forceToAdd += (Vector3.up);
