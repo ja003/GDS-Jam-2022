@@ -1278,6 +1278,38 @@ Transform:
   m_Father: {fileID: 4341687137869571862}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1643705231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1643705232}
+  m_Layer: 9
+  m_Name: RayHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1643705232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643705231}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0014124, y: -0.79, z: 0.52911}
+  m_LocalScale: {x: 1.5657, y: 1.5657, z: 1.5657}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 543450652978016320}
+  m_Father: {fileID: 8181648015940600893}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1810607304
 GameObject:
   m_ObjectHideFlags: 0
@@ -5088,6 +5120,89 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &755505067
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1643705232}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 283.85004
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 283
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 283.84998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.69283503
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.67304707
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.18564467
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.18034248
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 88.34
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 330
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e903613be1200f43a9e1844dcf5b702, type: 2}
+    - target: {fileID: 919132149155446097, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+      propertyPath: m_Name
+      value: cone
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+--- !u!4 &543450652978016320 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+  m_PrefabInstance: {fileID: 755505067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &919132148701932282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 752e88e0806665340ba8f3e6277f9c73, type: 3}
+  m_PrefabInstance: {fileID: 755505067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &116281739820659552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5642,6 +5757,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6779394347280065001, guid: fb70a71873d53b24ead5cf077d3bb478, type: 3}
+      propertyPath: Ray
+      value: 
+      objectReference: {fileID: 919132148701932282}
+    - target: {fileID: 6779394347280065001, guid: fb70a71873d53b24ead5cf077d3bb478, type: 3}
       propertyPath: IsUnlocked
       value: 0
       objectReference: {fileID: 0}
@@ -5674,6 +5793,11 @@ MonoBehaviour:
 --- !u!4 &6792785478849890974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 703362615823409308, guid: fb70a71873d53b24ead5cf077d3bb478, type: 3}
+  m_PrefabInstance: {fileID: 6306740378485008898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8181648015940600893 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2741855926248894015, guid: fb70a71873d53b24ead5cf077d3bb478, type: 3}
   m_PrefabInstance: {fileID: 6306740378485008898}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6504528196756851968

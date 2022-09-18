@@ -9,10 +9,14 @@ public class HumanAbductorWeapon : WeaponBase
 	[SerializeField] float Force = 1f;
 	[SerializeField] float NeededDist = 1;
 	[SerializeField] LayerMask ScientistLayer;
+	[SerializeField] GameObject Ray;
 
 	Scientist targetedScientist;
 
-
+	private void Awake()
+	{
+		Ray.SetActive(false);
+	}
 
 	protected override void Use(Vector3 pDirection)
 	{
@@ -21,15 +25,14 @@ public class HumanAbductorWeapon : WeaponBase
 
 		RaycastHit hit;
 
+		Ray.SetActive(true);
 
-        var overlaps = Physics.OverlapSphere(transform.position, range, ScientistLayer);
+		var overlaps = Physics.OverlapSphere(transform.position, range, ScientistLayer);
 		foreach(var overlap in overlaps)
 		{
 			targetedScientist = overlap.GetComponent<Scientist>();
 			if (targetedScientist != null)
-				break;
-
-			
+				break;			
 		}
 	}
 
@@ -54,6 +57,6 @@ public class HumanAbductorWeapon : WeaponBase
 	internal void StopUse()
 	{
 		targetedScientist = null;
-
-    }
+		Ray.SetActive(false);
+	}
 }
