@@ -276,15 +276,19 @@ PrefabInstance:
       objectReference: {fileID: 954767611}
     - target: {fileID: 6306740379625191906, guid: 8c34ff4957a6c5443bf900d0bba793f9, type: 3}
       propertyPath: XPForNextStage.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6306740379625191906, guid: 8c34ff4957a6c5443bf900d0bba793f9, type: 3}
       propertyPath: XPForNextStage.Array.data[0]
       value: 60
       objectReference: {fileID: 0}
-    - target: {fileID: 6487117013011543158, guid: 8c34ff4957a6c5443bf900d0bba793f9, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 55.828125
+    - target: {fileID: 6306740379625191906, guid: 8c34ff4957a6c5443bf900d0bba793f9, type: 3}
+      propertyPath: XPForNextStage.Array.data[1]
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306740379625191906, guid: 8c34ff4957a6c5443bf900d0bba793f9, type: 3}
+      propertyPath: XPForNextStage.Array.data[2]
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c34ff4957a6c5443bf900d0bba793f9, type: 3}
@@ -295,6 +299,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5834696740362076310, guid: d53a112e71495054eaa1b46f5c75a8fb, type: 3}
+      propertyPath: Stages.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834696740362076310, guid: d53a112e71495054eaa1b46f5c75a8fb, type: 3}
+      propertyPath: Stages.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: ae561b82f2ec58a4db04360e486ec0bd, type: 3}
+    - target: {fileID: 5834696740362076310, guid: d53a112e71495054eaa1b46f5c75a8fb, type: 3}
+      propertyPath: Stages.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 83cfd1d3a81dd4c44bb9d2c9aa54071e, type: 3}
     - target: {fileID: 5834696740362076311, guid: d53a112e71495054eaa1b46f5c75a8fb, type: 3}
       propertyPath: m_Name
       value: SoundtrackManager
