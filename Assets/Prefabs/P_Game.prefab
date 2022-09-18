@@ -6287,11 +6287,11 @@ MonoBehaviour:
   - Duration: 60
     Cooldown: 7
     CooldownVariance: 2
-    UpwardForceMultiplier: 2
-    OrbitForceMultiplier: 2
+    UpwardForceMultiplier: 3.5
+    OrbitForceMultiplier: 3
     TakeoffDuration: 2
     SetoffToOuterSpaceDuration: 15
-    TakeoffVariance: 1
+    TakeoffVariance: 0.5
     UseSmallProbes: 1
     UseBigProbes: 1
 --- !u!114 &4031095062332846122
