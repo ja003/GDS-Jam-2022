@@ -16,6 +16,7 @@ public class RewardObject : GameBehaviour, IDamagable
 	[SerializeField] float MaxInitForce = 20;
 	public int Amount;
 	public EReward Type;
+	public AudioClip SoundOnPickup;
 
 	internal void OnSpawn()
 	{
@@ -32,12 +33,12 @@ public class RewardObject : GameBehaviour, IDamagable
 	public void OnHit(int pDamage)
 	{
 		Destroy(gameObject);
-
 	}
 
 	internal void Take()
 	{
 		game.Player.AddReward(this);
+		Utils.PlayOneShotIndependently(SoundOnPickup);
 
 		Destroy(gameObject);
 

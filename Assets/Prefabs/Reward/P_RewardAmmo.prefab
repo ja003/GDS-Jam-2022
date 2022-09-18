@@ -64,6 +64,7 @@ MonoBehaviour:
   MaxInitForce: 20
   Amount: 1
   Type: 1
+  SoundOnPickup: {fileID: 8300000, guid: 13691068ceab222468a166ad14260e2b, type: 3}
 --- !u!54 &2056978330152778740
 Rigidbody:
   m_ObjectHideFlags: 0

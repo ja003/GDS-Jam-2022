@@ -75,6 +75,24 @@ public static class Utils
 		component.StartCoroutine(coroutine(obj));
 
     }
+	public static void PlayOneShotIndependently(AudioClip clip)
+    {
+		StartIndependentCoroutine(impl);
+		IEnumerator impl(GameObject o)
+        {
+			var player = o.AddComponent<AudioSource>();
+
+			player.PlayOneShot(clip);
+
+			yield return new WaitUntil(() => !player.isPlaying);
+			Object.Destroy(o);
+        }
+    }
+
+	public static void TryPlay(this ParticleSystem self)
+    {
+		if (!self.isPlaying) self.Play();
+    }
 }
 
 public class EmptyComponent : MonoBehaviour { }
