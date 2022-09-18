@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Scientist : GameBehaviour
+public class Scientist : GameBehaviour, IDamagable
 {
     [SerializeField] float Force = 0.2f;
 
@@ -36,5 +36,10 @@ public class Scientist : GameBehaviour
         game.Player.Stats.AddDetection(-ReduceDetection);
 
         Destroy(gameObject);
+    }
+
+    public void OnHit(int pDamage)
+    {
+        game.Player.Stats.AddDetection(5);
     }
 }
