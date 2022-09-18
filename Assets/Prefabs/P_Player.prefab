@@ -70,8 +70,8 @@ MonoBehaviour:
     MaxEscapeFromBounds: 1
     Mode: -1
   - Center: {x: 0, y: 0, z: 0}
-    Radius: 2.5
-    MaxEscapeFromBounds: 0.3
+    Radius: 2.4
+    MaxEscapeFromBounds: 0.4
     Mode: 1
 --- !u!54 &703362615823409309
 Rigidbody:

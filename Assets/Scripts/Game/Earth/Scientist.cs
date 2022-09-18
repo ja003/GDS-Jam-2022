@@ -18,9 +18,11 @@ public class Scientist : GameBehaviour, IDamagable
         spawnPosition = transform.position;
 
     }
+    bool isBeingAbducted = false;
     internal void AddForce(Vector3 pForce)
     {
         rb.AddForce(pForce);
+        isBeingAbducted = true;
         //Debug.Log("AddForce = " + pForce);
     }
 
@@ -32,6 +34,8 @@ public class Scientist : GameBehaviour, IDamagable
 
 	internal void Abduct()
 	{
+        if (!isBeingAbducted) return;
+
         game.Player.Stats.AddXP(Random.Range(MinXp, MaxXp));
         game.Player.Stats.AddDetection(-ReduceDetection);
 
