@@ -14,9 +14,20 @@ public class Probe : MonoBehaviour, IDamagable
 	[SerializeField] private float DetectionAddedOnSuccess = 20f;
 	[SerializeField] AudioClip DieSound, SuccessSound;
 	[SerializeField] private float DieAnimationDuration;
+	[SerializeField] DamagedAnimationInfo DamageAnim;
 
 	public float SuccessTargetDistance = 25f;
 	public Vector3 CenterOfUniverse => Vector3.zero;
+
+
+    [System.Serializable]
+	public struct DamagedAnimationInfo
+    {
+		public Material BlinkMaterial;
+		public MeshRenderer Blinker;
+		public int BlinksCount;
+		public float BlinkInterval, BlinkDuration;
+    }
 
 
 	public int TotalHealth = 1;
@@ -66,7 +77,31 @@ public class Probe : MonoBehaviour, IDamagable
 		{
 			Die();
 		}
+		PlayDamagedAnimation(DamageAnim);
 	}
+
+
+	bool damagedAnimationPlaying = false;
+	void PlayDamagedAnimation(DamagedAnimationInfo i)
+    {
+		if (damagedAnimationPlaying) return;
+
+		damagedAnimationPlaying = true;
+		var originalMaterials = i.Blinker.materials;
+		StartCoroutine(impl());
+		IEnumerator impl()
+        {
+			for(int t = 0; t < i.BlinksCount; ++t)
+            {
+				i.Blinker.materials = new[] { i.BlinkMaterial };
+				yield return new WaitForSeconds(i.BlinkDuration);
+				i.Blinker.materials = originalMaterials;
+				if (t < i.BlinksCount - 1)
+					yield return new WaitForSeconds(i.BlinkInterval);
+            }
+			damagedAnimationPlaying = false;
+        }
+    }
 
 	void Die()
 	{
