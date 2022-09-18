@@ -7,6 +7,7 @@ public class Asteroid : GameBehaviour
 {
     [SerializeField] float Force = 10;
     [SerializeField] int Damage = 5;
+    [SerializeField] AudioClip SoundOnDestroyed;
 
     internal void Spawn(Vector3 pDirection)
     {
@@ -21,7 +22,7 @@ public class Asteroid : GameBehaviour
             damagable?.OnHit(Damage);
 
 
-
+        Utils.PlayOneShotIndependently(SoundOnDestroyed);
         Destroy(gameObject);
     }
 
