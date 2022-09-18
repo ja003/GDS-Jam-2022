@@ -12,7 +12,6 @@ public class HUD : GameBehaviour
 	[SerializeField] TextMeshProUGUI XP;
 	[SerializeField] Slider DetectionMeter;
 
-
 	internal void Init()
 	{
 		SetXP(0);
@@ -34,4 +33,13 @@ public class HUD : GameBehaviour
 		gameObject.SetActive(false);
 	}
 
+	internal void Hide()
+	{
+		animator.Play("A_HUD_Hide");
+	}
+
+	internal void Show()
+	{
+		animator.Play("A_HUD_Show");
+	}
 }
