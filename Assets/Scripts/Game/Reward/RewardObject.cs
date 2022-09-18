@@ -2,35 +2,45 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Random = UnityEngine.Random;
 
 public enum EReward
 {
-    XP,
-    Ammo
+	XP,
+	Ammo
 }
 
 public class RewardObject : GameBehaviour, IDamagable
 {
-    public int Amount;
-    public EReward Type;
+	[SerializeField] int RotationSpeed = 1;
+	[SerializeField] float MaxInitForce = 20;
+	public int Amount;
+	public EReward Type;
 
-    private void Awake()
-    {
-        if (Amount < 0)
-            Debug.LogError("Bad Amount");
-    }
-    public void OnHit(int pDamage)
-    {
-        Destroy(gameObject);
+	internal void OnSpawn()
+	{
+		Vector3 force = new Vector3(Random.Range(-MaxInitForce, MaxInitForce), Random.Range(-MaxInitForce, MaxInitForce), 0);
+		rb.AddForce(force);
+		Debug.Log(force);
+	}
 
-    }
+	private void FixedUpdate()
+	{
+		transform.Rotate(Vector3.up, RotationSpeed);
+	}
 
-    internal void Take()
-    {
-        game.Player.AddReward(this);
+	public void OnHit(int pDamage)
+	{
+		Destroy(gameObject);
 
-        Destroy(gameObject);
+	}
 
-    }
+	internal void Take()
+	{
+		game.Player.AddReward(this);
+
+		Destroy(gameObject);
+
+	}
+
 }
