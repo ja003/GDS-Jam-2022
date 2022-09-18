@@ -9,20 +9,37 @@ public class EMPPulseWeapon : WeaponBase
 	[SerializeField] int Radius = 1;
 	[SerializeField] LayerMask ProbeLayer;
 
-	protected override void Use(Vector3 pDirection)
+	AudioSource audioPlayer;
+    private void Start()
+    {
+		audioPlayer = GetComponent<AudioSource>();
+    }
+
+	private bool isInUse = false;
+
+    protected override void Use(Vector3 pDirection)
 	{
 		//Debug.Log("USE");
 		particles.enableEmission = true;
+		isInUse = true;
+		audioPlayer?.Play();
+
 
 		DoInTime(() =>
 		{
+			isInUse = false;
 			particles.enableEmission = false;
-		}, Config.Cooldown);
+			audioPlayer?.StopAndReset();
+		}, Config.AnimationDuration);
 
 		DecreaseAmmo();
+		DamageNearby();
+	}
 
+	private void DamageNearby()
+	{
 		var overlaps = Physics.OverlapSphere(transform.position, Radius, ProbeLayer);
-		foreach(var overlap in overlaps)
+		foreach (var overlap in overlaps)
 		{
 			overlap.transform.GetComponent<IDamagable>()?.OnHit(Damage);
 		}

@@ -2803,6 +2803,7 @@ Transform:
   - {fileID: 4341687137337744091}
   - {fileID: 1534718538}
   - {fileID: 5961270212760526026}
+  - {fileID: 6605684944620422569}
   m_Father: {fileID: 4341687138347220183}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3054,6 +3055,7 @@ MonoBehaviour:
   ProjectilesHolder: {fileID: 4341687137337744091}
   ProbesHolder: {fileID: 1534718538}
   RewardsHolder: {fileID: 5961270212760526026}
+  AsteroidsHolder: {fileID: 6605684944620422569}
   Player: {fileID: 6792785478849890970}
   HUD: {fileID: 4341687137877000437}
   PauseMenu: {fileID: 6650211168038584293}
@@ -3396,6 +3398,37 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!1 &5630243017299821457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6605684944620422569}
+  m_Layer: 0
+  m_Name: Asteroids
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6605684944620422569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5630243017299821457}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4341687137869571862}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5817665316658338808
 GameObject:
   m_ObjectHideFlags: 0
@@ -6080,6 +6113,23 @@ MonoBehaviour:
   MinXP: 1
   MinCooldown: 5
   MaxCooldown: 15
+--- !u!114 &4341687136988131357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3884269776301020450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7fb34bea7c009543a2a00d603e479f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Radius: 50.38
+  EarthOffset: 2
+  Earth: {fileID: 572559351}
+  Asteroid: {fileID: 4062824675288399454, guid: 2a363728a39f93f4b920270d54ac2408, type: 3}
+  Frequency: 10
 --- !u!4 &4516092711178407832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 72a26c4bf1bdc6349a857846260c77eb, type: 3}

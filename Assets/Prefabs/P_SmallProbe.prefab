@@ -196,6 +196,8 @@ MonoBehaviour:
   RewardAmmoChance: 0.2
   MinRewardAmmo: 3
   MaxRewardAmmo: 10
+  DieSound: {fileID: 8300000, guid: 729662b70c7e5984db9de421f86ea27f, type: 3}
+  DieAnimationDuration: 0.7
   TotalHealth: 1
   detectors:
   - {fileID: 7711651337168973719}

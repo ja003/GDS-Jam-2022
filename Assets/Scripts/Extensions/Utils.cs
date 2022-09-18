@@ -4,7 +4,12 @@ using UnityEngine;
 
 public static class Utils 
 {
-	internal static void DebugDrawCross(Vector2 pPosition, Color pColor, float pDuration = -1)
+    public static void StopAndReset(this AudioSource self)
+    {
+		self.Stop();
+		self.time = 0f;
+    }
+    internal static void DebugDrawCross(Vector2 pPosition, Color pColor, float pDuration = -1)
 	{
 		if(pDuration <= 0)
 			pDuration = Time.deltaTime;
@@ -49,4 +54,27 @@ public static class Utils
 		//Convert the local point to world point
 		return parentCanvas.transform.TransformPoint(movePos);
 	}
+
+	public static IEnumerable<YieldInstruction> MakeInterpolation(float duration, System.Action<float> toDo)
+	{
+		double startTime = Time.timeAsDouble, endTime = startTime + duration;
+		for (double currentTime; (currentTime = Time.timeAsDouble) < endTime;)
+		{
+			var t = (float)(currentTime - startTime) / duration;
+			toDo(t);
+			yield return null;
+		}
+		toDo(1f);
+	}
+
+
+	public static void StartIndependentCoroutine(System.Func<GameObject, IEnumerator> coroutine)
+    {
+		var obj = new GameObject();
+		var component = obj.AddComponent<EmptyComponent>();
+		component.StartCoroutine(coroutine(obj));
+
+    }
 }
+
+public class EmptyComponent : MonoBehaviour { }

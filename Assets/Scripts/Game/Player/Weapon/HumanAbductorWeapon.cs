@@ -22,14 +22,24 @@ public class HumanAbductorWeapon : WeaponBase
 		Ray.SetActive(false);
 	}
 
-	protected override void Use(Vector3 pDirection)
+	
+	AudioSource audioPlayer;
+    private void Start()
+    {
+		audioPlayer = GetComponent<AudioSource>();
+    }
+
+    protected override void Use(Vector3 pDirection)
 	{
 		var overlaps = Physics.OverlapSphere(transform.position, Range, ScientistLayer);
 		foreach(var overlap in overlaps)
 		{
 			targetedScientist = overlap.GetComponent<Scientist>();
 			if (targetedScientist != null)
-				break;			
+            {
+				audioPlayer?.Play();
+				break;
+            }
 		}
 
 		if(targetedScientist != null)
@@ -68,5 +78,6 @@ public class HumanAbductorWeapon : WeaponBase
 	{
 		targetedScientist = null;
 		Ray.SetActive(false);
-	}
+		audioPlayer?.StopAndReset();
+    }
 }

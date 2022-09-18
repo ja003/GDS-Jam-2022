@@ -3,12 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : GameBehaviour, IDamagable
 {
 	public WeaponController WeaponController;
 	public PlayerStats Stats;
 
-    internal void AddReward(RewardObject pReward)
+	public void OnHit(int pDamage)
+	{
+		Stats.AddDetection(pDamage);
+	}
+
+	internal void AddReward(RewardObject pReward)
     {
 		switch (pReward.Type)
 		{

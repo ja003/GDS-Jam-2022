@@ -15,8 +15,9 @@ MonoBehaviour:
   ID: 1
   Icon: {fileID: 21300000, guid: 09ad57f7ce597484ba1bf604cb339802, type: 3}
   Name: EMP pulse
-  Magazines: 0
+  TotalAmmo: 0
   AmmoPerMagazine: 0
   Cooldown: 2
+  AnimationDuration: 0.4
   HasInfinityAmmo: 1
   XPRequired: 0
