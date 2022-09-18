@@ -65,10 +65,7 @@ public class HumanAbductorWeapon : WeaponBase
 
 		if (dist < NeededDist)
 		{
-			game.Player.Stats.AddXP(Random.Range(targetedScientist.MinXp, targetedScientist.MaxXp));
-			game.Player.Stats.AddDetection(-targetedScientist.ReduceDetection);
-
-			Destroy(targetedScientist.gameObject);
+			targetedScientist.Abduct();			
 			return;
 		}
 

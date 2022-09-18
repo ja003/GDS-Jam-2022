@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Scientist : GameBehaviour
 {
@@ -27,5 +28,13 @@ public class Scientist : GameBehaviour
     {
         Vector3 dir = (spawnPosition - transform.position).normalized;
         rb.AddForce(dir * Force);
+    }
+
+	internal void Abduct()
+	{
+        game.Player.Stats.AddXP(Random.Range(MinXp, MaxXp));
+        game.Player.Stats.AddDetection(-ReduceDetection);
+
+        Destroy(gameObject);
     }
 }
