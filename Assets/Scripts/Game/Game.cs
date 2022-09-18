@@ -13,35 +13,41 @@ public class Game : CSingleton<Game>
 
 	public Player Player;
 
-    public HUD HUD;
+	public HUD HUD;
 	public EarthController Earth;
 
 	[SerializeField] GameObject EndGameScreen;
 
-    [SerializeField] Button btnPlay;
-    [SerializeField] Button btnMenu;
+	[SerializeField] Button btnPlay;
+	[SerializeField] Button btnMenu;
 
-    private void Awake()
-    {
-        EndGameScreen.SetActive(false);
-        btnPlay.onClick.AddListener(PlayAgain);
-        btnMenu.onClick.AddListener(Menu);
-    }
-
-    internal void EndGame()
+	private void Awake()
 	{
+		EndGameScreen.SetActive(false);
+		btnPlay.onClick.AddListener(PlayAgain);
+		btnMenu.onClick.AddListener(Menu);
+	}
+
+	public bool HasGameEnded;
+	internal void EndGame()
+	{
+		if(HasGameEnded)
+			return;
+
+		HasGameEnded = true;
+
 		HUD.OnEndGame();
 		Debug.Log("End game");
 		EndGameScreen.SetActive(true);
-    }
+	}
 
-    private void PlayAgain()
-    {
-        SceneManager.LoadScene("S_Game");
-    }
+	private void PlayAgain()
+	{
+		SceneManager.LoadScene("S_Game");
+	}
 
-    private void Menu()
-    {
-        SceneManager.LoadScene("S_Menu");
-    }
+	private void Menu()
+	{
+		SceneManager.LoadScene("S_Menu");
+	}
 }
