@@ -36,7 +36,7 @@ public class Game : CSingleton<Game>
 		Curtain.SetFade(false, () => { HasGameStarted = true; });
 	}
 
-	public bool IsInGame => !HasGameEnded && !HasGameStarted;
+	public bool IsInGame => !HasGameEnded && HasGameStarted;
 	bool HasGameEnded;
 	bool HasGameStarted;
 
