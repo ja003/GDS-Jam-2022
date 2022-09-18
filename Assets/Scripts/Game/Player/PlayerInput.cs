@@ -14,11 +14,12 @@ public class PlayerInput : PlayerBehaviour
 		if(!game.IsInGame || Time.timeScale < 0.1f)
 			return;
 
-		Vector3 playerViewportPos = Camera.main.WorldToViewportPoint(transform.position);
-		float mouseX = (Input.mousePosition.x / Screen.width);
-		float mouseY = (Input.mousePosition.y / Screen.height);
-		Vector3 dir = (new Vector3(mouseX, mouseY, playerViewportPos.z) - playerViewportPos).normalized;
-
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		Plane plane = new Plane(-Vector3.forward, Vector3.zero);
+		float dist;
+		plane.Raycast(ray, out dist);
+		Vector3 dir = ray.GetPoint(dist) - transform.position;
+		
 		//Debug.Log(dir.normalized);
 
 		if(Input.GetKeyDown(KeyCode.Space))
