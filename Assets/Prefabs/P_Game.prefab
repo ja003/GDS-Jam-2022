@@ -5761,12 +5761,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 919132148701932282}
     - target: {fileID: 6779394347280065001, guid: fb70a71873d53b24ead5cf077d3bb478, type: 3}
+      propertyPath: Range
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779394347280065001, guid: fb70a71873d53b24ead5cf077d3bb478, type: 3}
+      propertyPath: range
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779394347280065001, guid: fb70a71873d53b24ead5cf077d3bb478, type: 3}
       propertyPath: RayPivot
       value: 
       objectReference: {fileID: 1643705232}
     - target: {fileID: 6779394347280065001, guid: fb70a71873d53b24ead5cf077d3bb478, type: 3}
       propertyPath: IsUnlocked
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779394347280065001, guid: fb70a71873d53b24ead5cf077d3bb478, type: 3}
+      propertyPath: RayScaleMultiplier
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 7766122786392538993, guid: fb70a71873d53b24ead5cf077d3bb478, type: 3}
       propertyPath: m_Layer
