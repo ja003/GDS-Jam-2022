@@ -35,7 +35,7 @@ public class GameBehaviour : MonoBehaviour
 	/// <summary>
 	/// Instantly sets alpha to image color property
 	/// </summary>
-	protected void SetAlpha(float pAlpha)
+	protected virtual void SetAlpha(float pAlpha)
 	{
 		image.enabled = true;
 		image.color = new Color(image.color.r, image.color.g, image.color.b, pAlpha);
