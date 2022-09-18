@@ -13,6 +13,9 @@ public class ProbeMovement : MonoBehaviour
 
 	[SerializeField] private float scaleAnimationDuration;
 
+	public ParticleSystem SmokeEffect;
+	public ParticleSystem FlameEffect;
+
 	private Rigidbody rb;
 	private Transform tr;
 
@@ -49,6 +52,16 @@ public class ProbeMovement : MonoBehaviour
 			Vector3 direction = Vector3.Slerp(awayFromEarth, orbitDirection, takeoffAngleCurve.Evaluate(timeSinceSpawn / takeoffDuration));
 			Vector3 force = direction * takeoffForceCurve.Evaluate(timeSinceSpawn / takeoffDuration) * maxForce;
 			rb.AddForce(force);
+
+			// rotation
+			transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+		}
+
+		// particles shutdown
+		if (timeSinceSpawn > takeoffDuration)
+		{
+			SmokeEffect.Stop();
+			FlameEffect.Stop();
 		}
 
 		// gravity
