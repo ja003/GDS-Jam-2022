@@ -14,7 +14,7 @@ public class Game : CSingleton<Game>
 	public Player Player;
 
 	public HUD HUD;
-	public EarthController Earth;
+	public ScienceController Earth;
 
 	[SerializeField] GameObject EndGameScreen;
 
