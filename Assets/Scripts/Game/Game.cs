@@ -28,7 +28,7 @@ public class Game : CSingleton<Game>
 		btnPlay.onClick.AddListener(PlayAgain);
 		btnMenu.onClick.AddListener(Menu);
 
-
+		HUD.Init();
 		Curtain.SetFade(false, () => { HasGameStarted = true; });
 	}
 
