@@ -12,6 +12,8 @@ public class ProbeMovement : MonoBehaviour
 	public float UpwardForceMultiplier;
 	public float OrbitForceMultiplier;
 	public float TakeoffDuration;
+	public float SetoffToOuterSpaceDuration;
+	public Vector3 CenterOfUniverse => Vector3.zero;
 
 	public ParticleSystem SmokeEffect;
 	public ParticleSystem FlameEffect;
@@ -59,11 +61,22 @@ public class ProbeMovement : MonoBehaviour
 		}
 
 		// particles shutdown
-		if (timeSinceSpawn > TakeoffDuration)
+		if (timeSinceSpawn > TakeoffDuration && timeSinceSpawn <= SetoffToOuterSpaceDuration)
 		{
 			SmokeEffect.Stop();
 			FlameEffect.Stop();
 		}
+
+		if(timeSinceSpawn > SetoffToOuterSpaceDuration)
+        {
+			SmokeEffect.TryPlay();
+			FlameEffect.TryPlay();
+
+			var awayFromEarth =  (tr.position - CenterOfUniverse).normalized;
+			var force = awayFromEarth * UpwardForceMultiplier;
+			rb.AddForce(force);
+
+        }
 
 		// gravity
 		Vector3 gravity = -tr.position.normalized * gravityMagnitude;
