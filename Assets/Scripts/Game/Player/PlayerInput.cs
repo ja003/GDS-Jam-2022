@@ -11,6 +11,9 @@ public class PlayerInput : PlayerBehaviour
 
 	void Update()
 	{
+		if(game.HasGameEnded)
+			return;
+
 		Vector3 playerViewportPos = Camera.main.WorldToViewportPoint(transform.position);
 		float mouseX = (Input.mousePosition.x / Screen.width);
 		float mouseY = (Input.mousePosition.y / Screen.height);
@@ -22,32 +25,32 @@ public class PlayerInput : PlayerBehaviour
 		{
 			Player.WeaponController.UseHumanAbductor();
 		}
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            Player.WeaponController.StopUseHumanAbductor();
-        }
-        //if(Input.GetKeyDown(KeyCode.E))
-        //{
-        //	Player.WeaponController.SetNextWeaponActive();
-        //}
+		if(Input.GetKeyUp(KeyCode.Space))
+		{
+			Player.WeaponController.StopUseHumanAbductor();
+		}
+		//if(Input.GetKeyDown(KeyCode.E))
+		//{
+		//	Player.WeaponController.SetNextWeaponActive();
+		//}
 
-        if (Input.GetMouseButtonDown(0))
+		if(Input.GetMouseButtonDown(0))
 		{
 			Player.WeaponController.UseEMPRocket(dir);
 		}
-        if (Input.GetMouseButtonDown(1))
-        {
-            Player.WeaponController.UseMeleeWeapon();
-        }
+		if(Input.GetMouseButtonDown(1))
+		{
+			Player.WeaponController.UseMeleeWeapon();
+		}
 
-        // debug
-        if (Input.GetKeyDown(KeyCode.Q))
+		// debug
+		if(Input.GetKeyDown(KeyCode.Q))
 		{
 			Player.Stats.AddXP(1);
 		}
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Player.Stats.AddDetection(25);
-        }
-    }
+		if(Input.GetKeyDown(KeyCode.E))
+		{
+			Player.Stats.AddDetection(25);
+		}
+	}
 }

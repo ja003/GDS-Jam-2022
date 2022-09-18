@@ -12,17 +12,20 @@ public class ProbeSpawner : GameBehaviour
 	float cooldownRemainig;
 
 	// Start is called before the first frame update
-    void Start()
-    {
-        cooldownRemainig = 0.3f;
-    }
+	void Start()
+	{
+		cooldownRemainig = 0.3f;
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        cooldownRemainig -= Time.deltaTime;
+	// Update is called once per frame
+	void Update()
+	{
+		if(game.HasGameEnded)
+			return;
 
-		if (cooldownRemainig <= 0f)
+		cooldownRemainig -= Time.deltaTime;
+
+		if(cooldownRemainig <= 0f)
 		{
 			float randomAngle = Random.Range(0f, 2 * Mathf.PI);
 			Vector3 direction = new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle));
@@ -30,9 +33,9 @@ public class ProbeSpawner : GameBehaviour
 
 			var newInst = Instantiate(probePrefab, spawnPoint, Quaternion.LookRotation(direction, Vector3.up));
 			newInst.transform.parent = game.ProbesHolder;
-            newInst.gameObject.SetActive(true);
+			newInst.gameObject.SetActive(true);
 
-            cooldownRemainig = cooldown;
+			cooldownRemainig = cooldown;
 		}
-    }
+	}
 }

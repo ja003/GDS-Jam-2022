@@ -15,8 +15,8 @@ MonoBehaviour:
   ID: 2
   Icon: {fileID: 21300000, guid: 09ad57f7ce597484ba1bf604cb339802, type: 3}
   Name: EMP rocket
-  TotalAmmo: 15
-  AmmoPerMagazine: 5
+  TotalAmmo: 999
+  AmmoPerMagazine: 999
   Cooldown: 3
-  HasInfinityAmmo: 0
+  HasInfinityAmmo: 1
   XPRequired: 0
