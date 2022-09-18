@@ -7,6 +7,9 @@ public class PlayerStats : PlayerBehaviour
 	public float DetectionMeter;
 	public int XP;
 
+	public float[] XPForNextStage;
+	public SoundtrackManager SoundtrackManager;
+
 	private void Awake()
 	{
 		AddXP(0);
@@ -18,8 +21,17 @@ public class PlayerStats : PlayerBehaviour
 		game.HUD.SetXP(XP);
 		Player.WeaponController.TryUnlockWeapon(XP);
 		game.Earth.OnXPChanged(XP);
-
+		TryProgressStage();
 	}
+
+	private void TryProgressStage()
+    {
+		while(XPForNextStage.Length > 0 && XP >= XPForNextStage[0])
+        {
+			SoundtrackManager?.AdvanceToNextStage();
+			XPForNextStage = XPForNextStage[1..];
+        }
+    }
 
 	public void AddDetection(float pValue)
 	{
