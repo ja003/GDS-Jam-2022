@@ -13,7 +13,7 @@ public class HUD : GameBehaviour
 
 	internal void SetXP(int pValue)
 	{
-		XP.text = pValue + " XP";
+		XP.text = pValue.ToString();
 	}
 
 	internal void SetDetectionMeter(float pValue)
