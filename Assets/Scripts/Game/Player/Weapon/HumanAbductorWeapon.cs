@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class HumanAbductorWeapon : WeaponBase
 {
@@ -45,6 +46,9 @@ public class HumanAbductorWeapon : WeaponBase
 		float dist = dir.magnitude;
 		if (dist < NeededDist)
 		{
+			game.Player.Stats.AddXP(Random.Range(targetedScientist.MinXp, targetedScientist.MaxXp));
+			game.Player.Stats.AddDetection(-targetedScientist.ReduceDetection);
+
 			Destroy(targetedScientist.gameObject);
 			return;
 		}
