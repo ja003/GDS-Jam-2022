@@ -24,7 +24,7 @@ public class PlayerMovement : GameBehaviour
 
 	void FixedUpdate()
 	{
-		if(game.HasGameEnded)
+		if(game.IsInGame)
 			return;
 
 		//Debug.Log($"velocity: {rb.velocity.magnitude}");

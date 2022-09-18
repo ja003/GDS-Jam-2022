@@ -16,6 +16,7 @@ public class Game : CSingleton<Game>
 	public HUD HUD;
 	public ScienceController Earth;
 
+	[SerializeField] UICurtain Curtain;
 	[SerializeField] GameObject EndGameScreen;
 
 	[SerializeField] Button btnPlay;
@@ -26,9 +27,15 @@ public class Game : CSingleton<Game>
 		EndGameScreen.SetActive(false);
 		btnPlay.onClick.AddListener(PlayAgain);
 		btnMenu.onClick.AddListener(Menu);
+
+
+		Curtain.SetFade(false, () => { HasGameStarted = true; });
 	}
 
-	public bool HasGameEnded;
+	public bool IsInGame => !HasGameEnded && !HasGameStarted;
+	bool HasGameEnded;
+	bool HasGameStarted;
+
 	internal void EndGame()
 	{
 		if(HasGameEnded)
@@ -43,11 +50,14 @@ public class Game : CSingleton<Game>
 
 	private void PlayAgain()
 	{
-		SceneManager.LoadScene("S_Game");
+		Curtain.SetFade(true, () => { SceneManager.LoadScene("S_Game"); });
+		//SceneManager.LoadScene("S_Game");
 	}
 
 	private void Menu()
 	{
-		SceneManager.LoadScene("S_Menu");
+		Curtain.SetFade(true, () => { SceneManager.LoadScene("S_Menu"); });
+
+		//SceneManager.LoadScene("S_Menu");
 	}
 }

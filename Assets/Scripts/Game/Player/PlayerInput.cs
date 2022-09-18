@@ -11,7 +11,7 @@ public class PlayerInput : PlayerBehaviour
 
 	void Update()
 	{
-		if(game.HasGameEnded)
+		if(game.IsInGame)
 			return;
 
 		Vector3 playerViewportPos = Camera.main.WorldToViewportPoint(transform.position);

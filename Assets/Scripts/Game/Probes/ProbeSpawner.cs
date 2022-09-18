@@ -20,7 +20,7 @@ public class ProbeSpawner : GameBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if(game.HasGameEnded)
+		if(!game.IsInGame)
 			return;
 
 		cooldownRemainig -= Time.deltaTime;
