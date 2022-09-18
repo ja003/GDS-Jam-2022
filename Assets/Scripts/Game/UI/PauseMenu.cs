@@ -12,6 +12,10 @@ public class PauseMenu : GameBehaviour
 	[SerializeField] Animator MenuAnimator;
 	[SerializeField] Button btnBackFromControls;
 
+	[SerializeField] CanvasGroup PauseMenuCanvas;
+	[SerializeField] CanvasGroup ControlsCanvas;
+
+
 	private void Awake()
 	{
 		btnResume.onClick.AddListener(Resume);
@@ -24,6 +28,10 @@ public class PauseMenu : GameBehaviour
 	{
 		gameObject.SetActive(true);
 		Time.timeScale = 0;
+		SetControlsInteractive(false);
+
+		ControlsCanvas.alpha = 0;
+
 		MenuAnimator.Play("A_PauseMenuOpen");
 	}
 
@@ -34,6 +42,8 @@ public class PauseMenu : GameBehaviour
 
 	private void ControlsToPause()
 	{
+		SetControlsInteractive(false);
+
 		MenuAnimator.Play("A_ControlsToPause");
 	}
 
@@ -48,7 +58,15 @@ public class PauseMenu : GameBehaviour
 
 	private void Controls()
 	{
+		SetControlsInteractive(true);
 		MenuAnimator.Play("A_PauseToControls");
+	}
+
+	private void SetControlsInteractive(bool pValue)
+	{
+		PauseMenuCanvas.interactable = !pValue;
+		ControlsCanvas.interactable = pValue;
+		ControlsCanvas.blocksRaycasts = pValue;
 	}
 
 	bool backToMenu;
