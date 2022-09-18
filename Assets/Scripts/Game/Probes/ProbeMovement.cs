@@ -8,10 +8,10 @@ public class ProbeMovement : MonoBehaviour
 
 	[SerializeField] private AnimationCurve takeoffAngleCurve;
 	[SerializeField] private AnimationCurve takeoffForceCurve;
-	[SerializeField] private float maxForce;
-	[SerializeField] private float takeoffDuration;
 
-	[SerializeField] private float scaleAnimationDuration;
+	public float UpwardForceMultiplier;
+	public float OrbitForceMultiplier;
+	public float TakeoffDuration;
 
 	public ParticleSystem SmokeEffect;
 	public ParticleSystem FlameEffect;
@@ -19,6 +19,7 @@ public class ProbeMovement : MonoBehaviour
 	private Rigidbody rb;
 	private Transform tr;
 
+	public float ScaleAnimationDuration;
 	private float targetScale;
 
 	private float timeSinceSpawn;
@@ -39,18 +40,18 @@ public class ProbeMovement : MonoBehaviour
 		timeSinceSpawn += Time.deltaTime;
 
 		// spawn groving animation
-		if (timeSinceSpawn <= scaleAnimationDuration) {
-			float scale = (timeSinceSpawn / scaleAnimationDuration) * targetScale;
+		if (timeSinceSpawn <= ScaleAnimationDuration) {
+			float scale = (timeSinceSpawn / ScaleAnimationDuration) * targetScale;
 			tr.localScale = new Vector3(scale, scale, scale);
 		}
 
 		// take off movement
-		if (timeSinceSpawn <= takeoffDuration) 
+		if (timeSinceSpawn <= TakeoffDuration) 
 		{
-			Vector3 awayFromEarth = tr.position.normalized;
-			Vector3 orbitDirection = new Vector3(-awayFromEarth.y, awayFromEarth.x);
-			Vector3 direction = Vector3.Slerp(awayFromEarth, orbitDirection, takeoffAngleCurve.Evaluate(timeSinceSpawn / takeoffDuration));
-			Vector3 force = direction * takeoffForceCurve.Evaluate(timeSinceSpawn / takeoffDuration) * maxForce;
+			Vector3 awayFromEarth = tr.position.normalized * UpwardForceMultiplier;
+			Vector3 orbitDirection = (new Vector3(-awayFromEarth.y, awayFromEarth.x)).normalized * OrbitForceMultiplier;
+			Vector3 direction = Vector3.Slerp(awayFromEarth, orbitDirection, takeoffAngleCurve.Evaluate(timeSinceSpawn / TakeoffDuration));
+			Vector3 force = direction * takeoffForceCurve.Evaluate(timeSinceSpawn / TakeoffDuration);
 			rb.AddForce(force);
 
 			// rotation
@@ -58,7 +59,7 @@ public class ProbeMovement : MonoBehaviour
 		}
 
 		// particles shutdown
-		if (timeSinceSpawn > takeoffDuration)
+		if (timeSinceSpawn > TakeoffDuration)
 		{
 			SmokeEffect.Stop();
 			FlameEffect.Stop();
