@@ -12,9 +12,13 @@ public class HumanAbductorWeapon : WeaponBase
 
 	Scientist targetedScientist;
 
+	AudioSource audioPlayer;
+    private void Start()
+    {
+		audioPlayer = GetComponent<AudioSource>();
+    }
 
-
-	protected override void Use(Vector3 pDirection)
+    protected override void Use(Vector3 pDirection)
 	{
 		Debug.DrawLine(transform.position, transform.position + pDirection.normalized * range, Color.red, 1);
 		Debug.Log("ABDUCT");
@@ -27,9 +31,10 @@ public class HumanAbductorWeapon : WeaponBase
 		{
 			targetedScientist = overlap.GetComponent<Scientist>();
 			if (targetedScientist != null)
+            {
+				audioPlayer?.Play();
 				break;
-
-			
+            }
 		}
 	}
 
@@ -54,6 +59,6 @@ public class HumanAbductorWeapon : WeaponBase
 	internal void StopUse()
 	{
 		targetedScientist = null;
-
+		audioPlayer?.StopAndReset();
     }
 }

@@ -12,6 +12,7 @@ public class WeaponConfig : ScriptableObject
 	public int TotalAmmo;
 	public int AmmoPerMagazine;
 	public int Cooldown;
+	public float AnimationDuration;
 	public bool HasInfinityAmmo;
 	public int XPRequired;
 }
