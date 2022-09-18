@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1984709946175395336}
   - component: {fileID: 8205686533309207204}
   - component: {fileID: 2056978330152778740}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: P_RewardAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

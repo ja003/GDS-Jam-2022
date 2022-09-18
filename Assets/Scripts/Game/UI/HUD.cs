@@ -12,6 +12,13 @@ public class HUD : GameBehaviour
 	[SerializeField] TextMeshProUGUI XP;
 	[SerializeField] Slider DetectionMeter;
 
+
+	internal void Init()
+	{
+		SetXP(0);
+		SetDetectionMeter(0);
+	}
+
 	internal void SetXP(int pValue)
 	{
 		XP.text = pValue.ToString();
@@ -26,4 +33,5 @@ public class HUD : GameBehaviour
 	{
 		gameObject.SetActive(false);
 	}
+
 }
