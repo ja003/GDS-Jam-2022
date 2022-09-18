@@ -18,8 +18,19 @@ public abstract class WeaponBase : GameBehaviour
 	{
 		LeftInMagazine = Config.AmmoPerMagazine;
         TotalAmmo = Config.TotalAmmo;
-        
-        UI = game.HUD.Weapon.CreateWeaponInfoUI(Config);
+
+		switch(Config.ID)
+		{
+			case EWeapon.EMPPulse:
+				UI = game.HUD.Weapon.Pulse;
+				break;
+			case EWeapon.EMPRocket:
+				UI = game.HUD.Weapon.Rocket;
+				break;
+			case EWeapon.HumanAbductor:
+				UI = game.HUD.Weapon.Abduct;
+				break;
+		}
 		UI.gameObject.SetActive(IsUnlocked);
 		UI.Refresh(this);
 	}
@@ -59,13 +70,13 @@ public abstract class WeaponBase : GameBehaviour
 			//even infinity ammo weapon has to reaload
 			if(TotalAmmo > 0 || Config.HasInfinityAmmo)
 			{
-				UI.SetReloading(true);
+				UI.SetReloading(true, Config.Cooldown);
 				IsReloading = true;
 				DoInTime(Reload, Config.Cooldown);
 			}
 			else
 			{
-				UI.SetAvailable(false);
+				//UI.SetAvailable(false);
 			}
 		}
 	}

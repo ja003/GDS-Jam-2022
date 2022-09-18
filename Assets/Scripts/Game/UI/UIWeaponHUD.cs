@@ -5,19 +5,10 @@ using UnityEngine;
 
 public class UIWeaponHUD : MonoBehaviour
 {
-	[SerializeField] UIWeaponInfo weaponInfoPrefab;
 
-	public List<UIWeaponInfo> WeaponInfos;
+	public UIWeaponInfo Pulse;
+	public UIWeaponInfo Rocket;
+	public UIWeaponInfo Abduct;
 
-	private void Awake()
-	{
-		weaponInfoPrefab.gameObject.SetActive(false);
-	}
 
-	internal UIWeaponInfo CreateWeaponInfoUI(WeaponConfig pWeaponConfig)
-	{
-		UIWeaponInfo newWeaponInfo = Instantiate(weaponInfoPrefab, transform);
-		newWeaponInfo.Init(pWeaponConfig);
-		return newWeaponInfo;
-	}
 }
