@@ -11,8 +11,12 @@ public class Probe : MonoBehaviour, IDamagable
 	[SerializeField] private float RewardAmmoChance = 0.5f;
 	[SerializeField] private int MinRewardAmmo = 5;
 	[SerializeField] private int MaxRewardAmmo = 15;
-	[SerializeField] AudioClip DieSound;
+	[SerializeField] private float DetectionAddedOnSuccess = 20f;
+	[SerializeField] AudioClip DieSound, SuccessSound;
 	[SerializeField] private float DieAnimationDuration;
+
+	public float SuccessTargetDistance = 25f;
+	public Vector3 CenterOfUniverse => Vector3.zero;
 
 
 	public int TotalHealth = 1;
@@ -40,7 +44,18 @@ public class Probe : MonoBehaviour, IDamagable
 				playerStats.AddDetection(Time.deltaTime);
 			}
 		}
+		TrySucceedMission();
 	}
+
+	void TrySucceedMission()
+    {
+		if(Vector3.Distance(transform.position, CenterOfUniverse) > SuccessTargetDistance)
+        {
+			playerStats.AddDetection(DetectionAddedOnSuccess);
+			Utils.PlayOneShotIndependently(SuccessSound);
+			Destroy(gameObject);
+        }
+    }
 
 	public void OnHit(int pDamage)
 	{

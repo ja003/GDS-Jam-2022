@@ -11,6 +11,7 @@ public struct Wave
 	public float UpwardForceMultiplier;
 	public float OrbitForceMultiplier;
 	public float TakeoffDuration;
+	public float SetoffToOuterSpaceDuration;
 	public float TakeoffVariance;
 	public bool UseSmallProbes;
 	public bool UseBigProbes;
@@ -66,6 +67,7 @@ public class ProbeSpawner : GameBehaviour
 				probe.TakeoffDuration = currentWave.TakeoffDuration + Variance(currentWave.TakeoffVariance);
 				probe.UpwardForceMultiplier = currentWave.UpwardForceMultiplier + Variance(currentWave.TakeoffVariance);
 				probe.OrbitForceMultiplier = currentWave.OrbitForceMultiplier + Variance(currentWave.TakeoffVariance);
+				probe.SetoffToOuterSpaceDuration = currentWave.SetoffToOuterSpaceDuration;
 
 				cooldownRemaining = currentWave.Cooldown + Variance(currentWave.CooldownVariance);
 			}

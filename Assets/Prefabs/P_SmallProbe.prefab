@@ -158,6 +158,7 @@ MonoBehaviour:
   UpwardForceMultiplier: 0
   OrbitForceMultiplier: 0
   TakeoffDuration: 0
+  SetoffToOuterSpaceDuration: 15
   SmokeEffect: {fileID: 348978812517267382}
   FlameEffect: {fileID: 4646769304332135616}
   ScaleAnimationDuration: 0.5
@@ -196,8 +197,11 @@ MonoBehaviour:
   RewardAmmoChance: 0.2
   MinRewardAmmo: 3
   MaxRewardAmmo: 10
+  DetectionAddedOnSuccess: 20
   DieSound: {fileID: 8300000, guid: 729662b70c7e5984db9de421f86ea27f, type: 3}
+  SuccessSound: {fileID: 8300000, guid: 55fdecde79b59b04fb1f4bec26fd5ded, type: 3}
   DieAnimationDuration: 0.7
+  SuccessTargetDistance: 30
   TotalHealth: 1
   detectors:
   - {fileID: 7711651337168973719}
