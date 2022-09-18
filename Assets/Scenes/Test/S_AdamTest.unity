@@ -356,6 +356,10 @@ PrefabInstance:
       propertyPath: Frequency
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4341687136988131357, guid: 8c34ff4957a6c5443bf900d0bba793f9, type: 3}
+      propertyPath: EarthOffset
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4341687138347220177, guid: 8c34ff4957a6c5443bf900d0bba793f9, type: 3}
       propertyPath: m_Name
       value: P_Game

@@ -22,14 +22,17 @@ public class AsteroidGenerator : GameBehaviour
 
     private void Generate()
     {
-        foreach (var ast in Asteroids)
+        for (int i = Asteroids.Count - 1; i >= 0; i--)
         {
+            Asteroid ast = Asteroids[i];
+            if(ast == null)
+                continue;
+
             float dist = Vector3.Distance(Earth.transform.position, ast.gameObject.transform.position);
             if (dist > Radius)
             {
-                Asteroids.Remove(ast);
+                Asteroids.RemoveAt(i);
                 Destroy(ast.gameObject);
-                break;
             }
         }
 
@@ -37,7 +40,9 @@ public class AsteroidGenerator : GameBehaviour
 
         Vector3 randDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
         Vector3 spawnPos = Earth.transform.position + randDir.normalized * Radius;
-        Vector3 direction = (Earth.transform.position + randDir * EarthOffset) - spawnPos;
+
+        randDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
+        Vector3 direction = (Earth.transform.position + randDir.normalized * EarthOffset) - spawnPos;
 
         var asteroid = Instantiate(Asteroid, spawnPos, Quaternion.identity, game.AsteroidsHolder);
         Asteroids.Add(asteroid);
