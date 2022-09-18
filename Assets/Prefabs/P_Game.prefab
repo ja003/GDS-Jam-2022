@@ -5530,9 +5530,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf2ad61922f80a4bab056fd54f9644b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 5
-  radius: 1
-  probePrefab: {fileID: 4731409826214765500, guid: 132912bad1b61f74ab40b7ca123d2eb4, type: 3}
+  Radius: 1.5
+  SmallProbePrefab: {fileID: 4731409826214765500, guid: 5c62f3b4cf9080449a03dd077c480459, type: 3}
+  BigProbePrefab: {fileID: 4731409826214765500, guid: 132912bad1b61f74ab40b7ca123d2eb4, type: 3}
+  Waves:
+  - Duration: 60
+    Cooldown: 7
+    CooldownVariance: 2
+    UpwardForceMultiplier: 2
+    OrbitForceMultiplier: 2
+    TakeoffDuration: 2
+    TakeoffVariance: 1
+    UseSmallProbes: 1
+    UseBigProbes: 1
 --- !u!114 &4031095062332846122
 MonoBehaviour:
   m_ObjectHideFlags: 0
