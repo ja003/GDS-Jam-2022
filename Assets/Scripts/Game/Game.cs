@@ -51,6 +51,7 @@ public class Game : CSingleton<Game>
 		HUD.OnEndGame();
 		Debug.Log("End game");
 		EndGameScreen.SetActive(true);
+		HUD.ShowMessage(EMessageType.GameOver);
 	}
 
 	private void PlayAgain()

@@ -39,6 +39,8 @@ public class Scientist : GameBehaviour, IDamagable
         game.Player.Stats.AddXP(Random.Range(MinXp, MaxXp));
         game.Player.Stats.AddDetection(-ReduceDetection);
 
+        game.HUD.ShowMessage(EMessageType.ScientistAbducted);
+
         Destroy(gameObject);
     }
 
