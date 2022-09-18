@@ -11,6 +11,7 @@ public class HUD : GameBehaviour
 
 	[SerializeField] TextMeshProUGUI XP;
 	[SerializeField] Slider DetectionMeter;
+	[SerializeField] public PauseMenu PauseMenu;
 
 
 	internal void Init()

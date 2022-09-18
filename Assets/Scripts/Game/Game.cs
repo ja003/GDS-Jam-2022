@@ -54,6 +54,11 @@ public class Game : CSingleton<Game>
 		//SceneManager.LoadScene("S_Game");
 	}
 
+	internal void PauseGame()
+	{
+		HUD.PauseMenu.Open();
+	}
+
 	private void Menu()
 	{
 		Curtain.SetFade(true, () => { SceneManager.LoadScene("S_Menu"); });

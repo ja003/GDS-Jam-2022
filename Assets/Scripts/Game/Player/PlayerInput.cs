@@ -43,6 +43,11 @@ public class PlayerInput : PlayerBehaviour
 			Player.WeaponController.UseMeleeWeapon();
 		}
 
+		if(Input.GetKeyDown(KeyCode.Escape))
+		{
+			game.PauseGame();
+		}
+
 		// debug
 		if(Input.GetKeyDown(KeyCode.Q))
 		{
