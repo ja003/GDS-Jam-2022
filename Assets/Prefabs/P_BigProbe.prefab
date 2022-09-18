@@ -202,6 +202,12 @@ MonoBehaviour:
   DieSound: {fileID: 8300000, guid: 729662b70c7e5984db9de421f86ea27f, type: 3}
   SuccessSound: {fileID: 8300000, guid: 55fdecde79b59b04fb1f4bec26fd5ded, type: 3}
   DieAnimationDuration: 0.6
+  DamageAnim:
+    BlinkMaterial: {fileID: 2100000, guid: ad768725490a366499f5a087f0f2da41, type: 2}
+    Blinker: {fileID: 6118499237460304193}
+    BlinksCount: 2
+    BlinkInterval: 0.2
+    BlinkDuration: 0.3
   SuccessTargetDistance: 30
   TotalHealth: 3
   detectors:
@@ -470,6 +476,11 @@ PrefabInstance:
 --- !u!4 &4945632434689284654 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1718fdcd09afbbb4ca8ba1abb5de4f0b, type: 3}
+  m_PrefabInstance: {fileID: 4839349807131884997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6118499237460304193 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 1718fdcd09afbbb4ca8ba1abb5de4f0b, type: 3}
   m_PrefabInstance: {fileID: 4839349807131884997}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7820607068075361234
