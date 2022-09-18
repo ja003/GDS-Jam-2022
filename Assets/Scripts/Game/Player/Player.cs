@@ -37,6 +37,12 @@ public class Player : MonoBehaviour
         {
             rewardObject.Take();
         }
-    }
+
+		Scientist scientist = collision.gameObject.GetComponent<Scientist>();
+		if(scientist != null)
+		{
+			scientist.Abduct();
+		}
+	}
 
 }
