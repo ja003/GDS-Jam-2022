@@ -10,6 +10,7 @@ public class HumanAbductorWeapon : WeaponBase
 	[SerializeField] float Force = 1f;
 	[SerializeField] float NeededDist = 1;
 	[SerializeField] LayerMask ScientistLayer;
+	[SerializeField] Transform RayPivot;
 	[SerializeField] GameObject Ray;
 
 	Scientist targetedScientist;
@@ -43,6 +44,8 @@ public class HumanAbductorWeapon : WeaponBase
 			return;
 
 		Vector3 dir = transform.position - targetedScientist.transform.position;
+		Ray.transform.SetPositionAndRotation(Ray.transform.position, Quaternion.LookRotation(-dir, Vector3.up));
+
 		float dist = dir.magnitude;
 		if (dist < NeededDist)
 		{
