@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Probe : MonoBehaviour, IDamagable
+public class Probe : GameBehaviour, IDamagable
 {
 	[SerializeField] private RewardObject RewardXPPrefab;
 	[SerializeField] private int MinRewardXP = 1;
@@ -44,6 +44,8 @@ public class Probe : MonoBehaviour, IDamagable
 		HealthLeft = TotalHealth;
 		game = FindObjectOfType<Game>();
 		playerStats = FindObjectOfType<PlayerStats>();
+
+		DoInTime(() => { canCollideEarth = true; }, 2);
 	}
 
 	void Update()
@@ -70,6 +72,9 @@ public class Probe : MonoBehaviour, IDamagable
 
 	private void OnCollisionEnter(Collision collision)
 	{
+		if (!canCollideEarth)
+			return;
+
 		Debug.Log("OnCollisionEnter " + collision.gameObject.name);
 		Earth earth = collision.gameObject.GetComponent<Earth>();
 
@@ -77,6 +82,7 @@ public class Probe : MonoBehaviour, IDamagable
 			Die(true);
 	}
 
+	bool canCollideEarth;
     public void OnHit(int pDamage)
 	{
 		HealthLeft -= pDamage;
