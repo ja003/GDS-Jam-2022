@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : GameBehaviour
 {
 	[SerializeField] Rigidbody rb;
 	[SerializeField] float speed = 1;
@@ -22,16 +22,11 @@ public class PlayerMovement : MonoBehaviour
 		public enum NoEntryMode { StayInside = -1, StayOutside = 1 }
 	}
 
-	// Start is called before the first frame update
-	void Start()
-	{
-
-
-	}
-
-	// Update is called once per frame
 	void FixedUpdate()
 	{
+		if(game.HasGameEnded)
+			return;
+
 		//Debug.Log($"velocity: {rb.velocity.magnitude}");
 		if(rb.velocity.magnitude > maxVelocity) rb.velocity = rb.velocity.normalized * maxVelocity;
 
