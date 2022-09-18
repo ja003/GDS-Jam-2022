@@ -5956,7 +5956,7 @@ MonoBehaviour:
     UpwardForceMultiplier: 2
     OrbitForceMultiplier: 2
     TakeoffDuration: 2
-    SetoffToOuterSpaceDuration: 0
+    SetoffToOuterSpaceDuration: 30
     TakeoffVariance: 1
     UseSmallProbes: 1
     UseBigProbes: 1

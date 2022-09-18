@@ -9,7 +9,7 @@ public class Projectile : GameBehaviour
 
 	public void Shoot(Vector3 pForce, int pDamage)
 	{
-		rb.AddForce(pForce);
+		rb.AddForce(pForce / 100);
 		damage = pDamage;
 
 		transform.Rotate(Quaternion.LookRotation(pForce.normalized).eulerAngles + angleOffset);
