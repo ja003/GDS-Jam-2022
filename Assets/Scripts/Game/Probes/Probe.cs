@@ -56,6 +56,7 @@ public class Probe : MonoBehaviour, IDamagable
 
 				rewardAmmo.Type = EReward.Ammo;
 				rewardAmmo.Amount = Random.Range(MinRewardXP, MaxRewardXP) + TotalHealth;
+				rewardAmmo.OnSpawn();
 			}
 
 			//reward XP
@@ -66,6 +67,7 @@ public class Probe : MonoBehaviour, IDamagable
 
 			rewardXP.Type = EReward.XP;
 			rewardXP.Amount = Random.Range(MinRewardAmmo, MaxRewardAmmo) + TotalHealth * 3;
+			rewardXP.OnSpawn();
 
 			Destroy(gameObject);
 		}
