@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Force: 150
+  Damage: 5
+  SoundOnDestroyed: {fileID: 8300000, guid: 729662b70c7e5984db9de421f86ea27f, type: 3}
 --- !u!54 &-8639204911322126629
 Rigidbody:
   m_ObjectHideFlags: 0
