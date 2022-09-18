@@ -24,7 +24,9 @@ public class PlayerStats : PlayerBehaviour
 	public void AddDetection(float pValue)
 	{
 		DetectionMeter += pValue;
-        game.HUD.SetDetectionMeter(DetectionMeter);
+		DetectionMeter = Mathf.Clamp(DetectionMeter, 0, 100);
+
+		game.HUD.SetDetectionMeter(DetectionMeter);
 
 		if(DetectionMeter >= 100f)
 		{

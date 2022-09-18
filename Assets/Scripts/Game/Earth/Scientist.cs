@@ -7,6 +7,10 @@ public class Scientist : GameBehaviour
 {
     [SerializeField] float Force = 0.2f;
 
+    [SerializeField] public int MinXp = 5;
+    [SerializeField] public int MaxXp = 10;
+    [SerializeField] public int ReduceDetection = 10;
+
     Vector3 spawnPosition;
     private void Awake()
     {
