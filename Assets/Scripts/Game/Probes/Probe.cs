@@ -103,8 +103,11 @@ public class Probe : MonoBehaviour, IDamagable
         }
     }
 
+	bool isDying = false;
 	void Die()
 	{
+		if (isDying) return;
+		isDying = true;
 		Utils.StartIndependentCoroutine(impl);
 
 		IEnumerator impl(GameObject runner)
