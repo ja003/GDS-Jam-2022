@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : GameBehaviour
 {
 	[SerializeField] Button btnPlay;
 	[SerializeField] Button btnControls;
@@ -21,7 +21,9 @@ public class MainMenu : MonoBehaviour
 
 	private void Play()
 	{
-		SceneManager.LoadScene("S_Game");
+		MenuAnimator.Play("A_MenuPlay");
+
+		DoInTime(() => { SceneManager.LoadScene("S_Game"); }, 1);
 	}
 
 	private void Controls()
