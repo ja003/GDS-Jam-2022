@@ -18,6 +18,7 @@ public class HUD : GameBehaviour
 	{
 		SetXP(0);
 		SetDetectionMeter(0);
+		PauseMenu.gameObject.SetActive(false);
 	}
 
 	internal void SetXP(int pValue)

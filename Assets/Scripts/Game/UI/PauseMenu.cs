@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenu : GameBehaviour
@@ -9,12 +10,14 @@ public class PauseMenu : GameBehaviour
 	[SerializeField] Button btnControls;
 	[SerializeField] Button btnMainMenu;
 	[SerializeField] Animator MenuAnimator;
+	[SerializeField] Button btnBackFromControls;
 
 	private void Awake()
 	{
 		btnResume.onClick.AddListener(Resume);
 		btnControls.onClick.AddListener(Controls);
 		btnMainMenu.onClick.AddListener(BackToMenu);
+		btnBackFromControls.onClick.AddListener(ControlsToPause);
 	}
 
 	public void Open()
@@ -29,18 +32,29 @@ public class PauseMenu : GameBehaviour
 		MenuAnimator.Play("A_PauseMenuClose");
 	}
 
+	private void ControlsToPause()
+	{
+		MenuAnimator.Play("A_ControlsToPause");
+	}
+
 	public void anim_OnMenuClosed()
 	{
-		Time.timeScale = 1; 
+		Time.timeScale = 1;
+		if(backToMenu)
+		{
+			SceneManager.LoadScene("S_Menu");
+		}
 	}
 
 	private void Controls()
 	{
-		MenuAnimator.Play("A_MenuToControls");
+		MenuAnimator.Play("A_PauseToControls");
 	}
 
+	bool backToMenu;
 	private void BackToMenu()
 	{
-		MenuAnimator.Play("A_ControlsToMenu");
+		Resume();
+		backToMenu = true;
 	}
 }
