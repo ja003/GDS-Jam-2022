@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angleOffset: {x: 90, y: 0, z: 0}
-  speed: 0.1
+  speed: 0.2
 --- !u!136 &5238692018675366091
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -111,10 +111,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5053522
-  m_Height: 0.81576294
+  m_Radius: 1.7080362
+  m_Height: 0.78726494
   m_Direction: 1
-  m_Center: {x: 0.00535205, y: -0.09008069, z: 0}
+  m_Center: {x: 0.00535205, y: 0.01337087, z: 0}
 --- !u!1 &5985931404884996288
 GameObject:
   m_ObjectHideFlags: 0
