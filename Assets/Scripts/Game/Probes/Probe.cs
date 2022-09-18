@@ -55,6 +55,8 @@ public class Probe : GameBehaviour, IDamagable
 			if (detector.IsTriggered)
 			{
 				playerStats.AddDetection(Time.deltaTime);
+
+				game.HUD.ShowMessage(EMessageType.Detected);
 			}
 		}
 		TrySucceedMission();
@@ -65,6 +67,9 @@ public class Probe : GameBehaviour, IDamagable
 		if(Vector3.Distance(transform.position, CenterOfUniverse) > SuccessTargetDistance)
         {
 			playerStats.AddDetection(DetectionAddedOnSuccess);
+
+			game.HUD.ShowMessage(EMessageType.ProbeEscaped);
+
 			Utils.PlayOneShotIndependently(SuccessSound);
 			Destroy(gameObject);
         }
@@ -164,6 +169,9 @@ public class Probe : GameBehaviour, IDamagable
                 rewardXP.OnSpawn();
             }
             Destroy(gameObject);
+
+			// message
+			game.HUD.ShowMessage(EMessageType.ProbeDestroyed);
 
 			yield return new WaitUntil(() => !audioPlayer.isPlaying);
 			Destroy(runner);

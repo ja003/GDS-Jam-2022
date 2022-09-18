@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public enum EMessageType
 {
@@ -8,6 +9,7 @@ public enum EMessageType
 	ProbeDestroyed,
 	GameOver,
 	ProbeEscaped,
+	ScientistAbducted,
 	TutorialProbeEscape
 }
 
@@ -21,6 +23,8 @@ public struct Message
 
 public class MessagePanel : MonoBehaviour
 {
+	public TMP_Text TextBox; 
+
 	public float HiddenY;
 	public float AnimationSpeed;
 
@@ -29,17 +33,35 @@ public class MessagePanel : MonoBehaviour
 	private RectTransform tr;
 	private Message message;
 
-	private float timeAtAnimStart = -1f;
+	private bool active;
 
 	void Start()
 	{
+		active = false;
 		ChangeY(HiddenY);
 	}
 
 	public void ShowMessage(EMessageType pType)
 	{
+		if (active)
+			return;
+
+		if (pType == EMessageType.Detected && Random.Range(0f, 100f) < 70f)
+			return;
+
+		if (pType == EMessageType.ProbeDestroyed && Random.Range(0f, 100f) < 70f)
+			return;
+
+		if (pType == EMessageType.ProbeEscaped && Random.Range(0f, 100f) < 50f)
+			return;
+
+		if (pType == EMessageType.ScientistAbducted && Random.Range(0f, 100f) < 20f)
+			return;
+
 		List<Message> possibleMessages = Messages.FindAll((x) => x.MessageType == pType);
 		message = possibleMessages[Random.Range((int)0, possibleMessages.Count - 1)];
+
+		TextBox.text = message.MessageText;
 
 		StartCoroutine("Show");
 	}
@@ -53,6 +75,8 @@ public class MessagePanel : MonoBehaviour
 
 	IEnumerator Show()
 	{
+		active = true;
+
 		for (float y = HiddenY; y >= 0; y -= AnimationSpeed)
 		{
 			ChangeY(y);
@@ -71,5 +95,7 @@ public class MessagePanel : MonoBehaviour
 			ChangeY(y);
 			yield return null;
 		}
+
+		active = false;
 	}
 }
